@@ -28,7 +28,7 @@ The pokeball only moves to the right, but the speed changes depending on the key
       export DISPLAY=:0
       make run
 
-## Did you stop? Write in terminal:
+## to delete everything created by the Makefile, write in the terminal the command:
     make clean
 
 ## About game:
