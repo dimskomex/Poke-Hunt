@@ -32,6 +32,6 @@ The pokeball only moves to the right, but the speed changes depending on the key
     make clean
 
 ## About game:
-- The game is based on the first task of the lesson [Data structures & programming techniques of the University of Athens](https://k08.chatzi.org/projects/project1/)
+- The game is based on the first task of the lesson [Data structures & programming techniques of the University of Athens](https://k08.chatzi.org/projects/project1/) and uses the [raylib graphics library](https://github.com/raysan5/raylib/blob/master/src/raylib.h)
 
 - Many tools such as include files, modules & makefiles are based on the [Lecture Code repository](https://github.com/chatziko-k08/lecture-code)
