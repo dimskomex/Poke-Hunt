@@ -1,7 +1,7 @@
 # Poke-Hunt!
 
 ## Game theme: 
-You're basically a pokeball who scores points by catching pokemon. If the pokemon is legendary, you earn 15 points, otherwise, 10 points. The goal is to collect as many points as you can by catching more and more pokemon. Catching pokemon is not that simple, as pokeball will rely on platforms that you will have to jump from one to the other, because the pokeball will fall down. If this is done, the game stops.
+You're basically a pokeball who scores points by catching pokemon. If the pokemon is legendary, you earn 15 points, otherwise, 10 points. The goal is to collect as many points as you can by catching more and more pokemon. Catching pokemon is not that simple, as pokeball will rely on platforms that you will have to jump from one to the other, because the pokeball will fall down. If this is done, the game stops. Beware of red platforms, you have to be fast because they hide traps!
 
 ## Pokeball moves: 
 The pokeball only moves to the right, but the speed changes depending on the keys. If you don't press any keys, it moves at normal speed, if you press the left key it goes slowly, while with the right key it goes fast. With the up key it jumps so that you go from one platform to another.
