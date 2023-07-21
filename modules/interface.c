@@ -7,7 +7,7 @@
 
 // Photos
 Texture pokeball_img, staryu_img, starmie_img, bulbasaur_img, charmander_img, picachu_img, arceus_img, reyquaza_img;
-Texture gengar_img, torterra_img, eevee_img, snorlax_img, squirtle_img, zekrom_img, reshiram_img;
+Texture gengar_img, torterra_img, eevee_img, snorlax_img, squirtle_img, zekrom_img, reshiram_img, ultraball_img, masterball_img;
 
 // Sounds
 Sound music;
@@ -20,6 +20,11 @@ static Texture2D draw_pokemon(Pokemon pokemon)
 	pokemon == TORTERRA ? torterra_img : pokemon == SQUIRTLE ? squirtle_img : gengar_img;
 }
 
+static Texture draw_pokeball(StateInfo info)
+{
+	return info->ball->pokeball == POKEBALL ? pokeball_img : info->ball->pokeball == ULTRABALL ? ultraball_img : masterball_img; 
+}
+
 void interface_init() 
 {
 	// Initialize the window
@@ -27,8 +32,11 @@ void interface_init()
 	SetTargetFPS(60);
     InitAudioDevice();
 
+
 	// Load images
 	pokeball_img = LoadTextureFromImage(LoadImage("photos/pokeball.png"));
+	ultraball_img = LoadTextureFromImage(LoadImage("photos/ultraball.png"));
+	masterball_img = LoadTextureFromImage(LoadImage("photos/masterball.png"));
 	staryu_img = LoadTextureFromImage(LoadImage("photos/staryu.png"));
 	starmie_img = LoadTextureFromImage(LoadImage("photos/starmie.png"));
 	bulbasaur_img = LoadTextureFromImage(LoadImage("photos/bulbasaur.png"));
@@ -60,7 +68,6 @@ void interface_close()
 // Draw game (one frame)
 void interface_draw_frame(State state) 
 {
-	srand(time(NULL));
 	BeginDrawing();
 
 	// Cleanup, we'll draw everything from scratch
@@ -72,7 +79,7 @@ void interface_draw_frame(State state)
 
 	x_offset = SCREEN_WIDTH - 200 - info->ball->rect.x;
 
-    DrawTexture(pokeball_img, SCREEN_WIDTH / 4, info->ball->rect.y, WHITE);
+	DrawTexture(draw_pokeball(info), SCREEN_WIDTH / 4, info->ball->rect.y, WHITE);
 
 	List objs;
 
