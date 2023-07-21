@@ -5,6 +5,7 @@
 #include "ADTList.h"
 #include "state.h"
 #include "updates.h"
+#include "collisions.h"
 
 #define MIN_HEIGHT (SCREEN_HEIGHT - 45)
 
@@ -72,8 +73,8 @@ static void add_objects(State state, float start_x)
 			i < 3 || rand() % 2 == 0 ? MOVING_UP : MOVING_DOWN, // random initial move (first 3 always up)
 			0.6 + 3*(rand()%100)/100, 							// speed randomly in the interval [0.6, 3.6]
 			i > 0 && (rand() % 10) == 0, 						// 10% (random) platforms are unstable (except the first one)
-			NOTHING,											// is not pokemon
-			NO_POKEBALL											// is not pokeball
+			NO_POKEMON,											// isn't pokemon
+			NO_POKEBALL											// isn't pokeball
 		);
 		vector_insert_last(state->objects, platform);
 
@@ -89,8 +90,8 @@ static void add_objects(State state, float start_x)
 				IDLE, 											// no movement
 				0, 												// speed 0
 				false, 											// 'unstable' always false for stars
-				rand() % 16,									// one of the 15 pokemons (random)
-				NO_POKEBALL
+				rand() % 15,									// one of the 14 pokemons (random)
+				NO_POKEBALL										// isn't pokeball
 			);
 			vector_insert_last(state->objects, pokemon);
 		}
@@ -125,16 +126,6 @@ static Object find_max_platform(State state)
 	return max;
 }
 
-static bool collision_success(Pokeball pokeball)
-{
-	return pokeball == POKEBALL ? rand() % 40 == 0 : pokeball == ULTRABALL ? rand() % 30 == 0 : true;
-}
-
-static Pokeball upgrade_pokeball(int score)
-{
-	return score <= 35 ? POKEBALL : score <= 95 ? ULTRABALL : MASTERBALL;
-}
-
 State state_create() 
 {
 	// Create the state
@@ -162,7 +153,7 @@ State state_create()
 		IDLE, 							// no initial vertical movement
 		0, 								// initial speed 0
 		false, 							// "unstable" always false for ball
-		NOTHING,						// is not pokemon
+		NO_POKEMON,						// is not pokemon
 		POKEBALL
 	);
 
@@ -201,7 +192,7 @@ void state_update(State state, KeyState keys)
 	if (!is_paused(state->info.paused, keys)) 
 	{
 		Object last_platform = find_max_platform(state);
-		update_ball(state->info.ball, keys, state->speed_factor);
+		update_pokeball(state->info.ball, keys, state->speed_factor, state->info.score);
 
 		// in each frame the falling state is made so that a collision can occur
 		if (state->info.ball->vert_mov == IDLE)
@@ -214,27 +205,20 @@ void state_update(State state, KeyState keys)
 		{
 			Object obj = vector_get_at(state->objects, i);
 			if (obj->type == PLATFORM)
-				update_platform(obj, state->info.ball, state->speed_factor);
+				update_platform(obj, state->speed_factor);
 
 			if (CheckCollisionRecs(obj->rect, state->info.ball->rect))
 			{
 				if (obj->type == POKEMON)
 				{
-					bool success = collision_success(state->info.ball->pokeball);
-
-					if (success)
+					if (collision_with_pokemon(state->info.ball->pokeball))
 					{
 						state->info.score += is_legendary(obj->pokemon) ? 15 : 10;
 						vector_remove(state->objects, i);	
-					}
-							
-					state->info.ball->pokeball = upgrade_pokeball(state->info.score);				
+					}				
 				}
 				else if (obj->type == PLATFORM && state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height))
-				{
-					state->info.ball->rect.y = obj->rect.y - state->info.ball->rect.height + 2;
-					state->info.ball->vert_mov = IDLE;
-				}
+					collision_with_platform(state->info.ball, obj);
 			}
 		}
 
@@ -252,7 +236,7 @@ void state_update(State state, KeyState keys)
 		new_state(state);
 
 	if (keys->p)
-		state->info.paused  = !state->info.paused;
+		state->info.paused = !state->info.paused;
 }
 
 void state_destroy(State state)

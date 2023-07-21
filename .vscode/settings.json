@@ -32,6 +32,7 @@
 		"common_types.h": "c",
 		"stdbool.h": "c",
 		"set_utils.h": "c",
-		"state.h": "c"
+		"state.h": "c",
+		"time.h": "c"
 	},
 }

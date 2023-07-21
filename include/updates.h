@@ -3,7 +3,7 @@
 #include "state.h"
 
 // Updates the ball every frame
-void update_ball(Object ball, KeyState keys, float speed_factor);
+void update_pokeball(Object pokeball, KeyState keys, float speed_factor, int score);
 
 // Updates platform on every frame
-void update_platform(Object platform, Object ball, float speed_factor);
+void update_platform(Object platform, float speed_factor);

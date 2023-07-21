@@ -3,6 +3,7 @@
 
 #include "interface.h"
 #include "state.h"
+#include "collisions.h"
 
 State state;
 

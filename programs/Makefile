@@ -1,13 +1,11 @@
-LIB = ../lib
-
-game_OBJS = game.o $(MODULES)/state.o $(MODULES)/interface.o $(MODULES)/updates.o $(MODULES)/UsingLinkedList/ADTList.o $(MODULES)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a
+game_OBJS = game.o $(MODULES)/state.o $(MODULES)/interface.o $(MODULES)/updates.o $(MODULES)/collisions.o $(MODULES)/UsingLinkedList/ADTList.o $(MODULES)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a 
 
 # Parameters of the raylib library
-include $(LIB)/libraylib.mk
+include ../lib/libraylib.mk
 
 # To build libraylib.a we run the make on the lib directory.
-$(LIB)/%.a:
-	$(MAKE) -C $(LIB) $*.a
+../lib/%.a:
+	$(MAKE) -C ../lib $*.a
 
 # The body of the Makefile
 include ../common.mk

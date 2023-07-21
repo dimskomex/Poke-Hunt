@@ -45,7 +45,7 @@ LIB		:= $(MY_PATH)lib
 # -MDD Creates a .d file with the dependencies, which we can include in the Makefile
 #
 # Override allows additional parameters to be added from the command line: make CFLAGS=...
-override CFLAGS += -g -Wall -Werror -MMD -I$(INCLUDE)
+override CFLAGS += -g -Wall -MMD -I$(INCLUDE)
 
 # Linker options
 # -lm == Link with math library

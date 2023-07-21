@@ -25,6 +25,7 @@ typedef enum
 
 typedef enum 
 {
+	NO_POKEMON,
 	STARYU, 
 	STARMIE, 
 	BULBASAUR, 
@@ -38,8 +39,7 @@ typedef enum
 	SNORLAX, 
 	SQUIRTLE, 
 	EEVEE, 
-	GENGAR, 
-	NOTHING
+	GENGAR
 } Pokemon;
 
 typedef enum 

@@ -1,39 +1,41 @@
 #include "updates.h"
 
-void update_ball(Object ball, KeyState keys, float speed_factor)
+void update_pokeball(Object pokeball, KeyState keys, float speed_factor, int score)
 {
-	ball->rect.x += keys->right ? 6 : keys->left ? 0.8 : 4; 
+	pokeball->rect.x += keys->right ? 6 : keys->left ? 0.8 : 4; 
 
-	if (ball->vert_mov == JUMPING)
+	if (pokeball->vert_mov == JUMPING)
 	{
-		ball->rect.y -= (ball->vert_speed * speed_factor); 		// increase upwards => decrease in y 
-		ball->vert_speed *= 0.85;
+		pokeball->rect.y -= (pokeball->vert_speed * speed_factor); 		// increase upwards => decrease in y 
+		pokeball->vert_speed *= 0.85;
 		
-		if (ball->vert_speed <= 0.5) 
-			ball->vert_mov = FALLING;
+		if (pokeball->vert_speed <= 0.5) 
+			pokeball->vert_mov = FALLING;
 
 		// if he has reached the maximum possible height when jumping, the Pokeball must fall
-		if (ball->rect.y == SCREEN_HEIGHT) 
-			ball->vert_mov = FALLING; 
+		if (pokeball->rect.y == SCREEN_HEIGHT) 
+			pokeball->vert_mov = FALLING; 
 
 	}
-	else if (ball->vert_mov == FALLING)
+	else if (pokeball->vert_mov == FALLING)
 	{
-		ball->rect.y += (ball->vert_speed * speed_factor);	 	// decrease downwards => increase in y
-		ball->vert_speed *= 1.1;
+		pokeball->rect.y += (pokeball->vert_speed * speed_factor);	 	// decrease downwards => increase in y
+		pokeball->vert_speed *= 1.1;
 
-		if (ball->vert_speed > 7)
-			ball->vert_speed = 7;
+		if (pokeball->vert_speed > 7)
+			pokeball->vert_speed = 7;
 
 	}
-	else if (ball->vert_mov == IDLE && keys->up)
+	else if (pokeball->vert_mov == IDLE && keys->up)
 	{
-		ball->vert_mov = JUMPING;
-		ball->vert_speed = 17;
+		pokeball->vert_mov = JUMPING;
+		pokeball->vert_speed = 17;
 	}
+
+	pokeball->pokeball = score <= 35 ? POKEBALL : score <= 95 ? ULTRABALL : MASTERBALL;
 }
 
-void update_platform(Object platform, Object ball, float speed_factor)
+void update_platform(Object platform, float speed_factor)
 {
 	if (platform->vert_mov == MOVING_UP)
 	{
@@ -53,11 +55,4 @@ void update_platform(Object platform, Object ball, float speed_factor)
 	}
 	else if (platform->vert_mov == FALLING)
 		platform->rect.y += 4;
-
-	if (platform->unstable && CheckCollisionRecs(ball->rect, platform->rect))
-	{
-		platform->vert_mov = FALLING;
-		ball->vert_mov = IDLE;
-		ball->rect.y = platform->rect.y - platform->rect.height - 5;
-	}
 }
