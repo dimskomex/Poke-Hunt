@@ -25,7 +25,7 @@ static bool is_legendary(Pokemon pokemon)
 }
 
 // Creates and returns an object
-static Object create_object(ObjectType type, float x, float y, float width, float height, VerticalMovement vert_mov, float speed, bool unstable, Pokemon pokemon) 
+static Object create_object(ObjectType type, float x, float y, float width, float height, VerticalMovement vert_mov, float speed, bool unstable, Pokemon pokemon, Pokeball pokeball) 
 {
 	Object obj = malloc(sizeof(*obj));
 	obj->type = type;
@@ -37,6 +37,7 @@ static Object create_object(ObjectType type, float x, float y, float width, floa
 	obj->vert_speed = speed;
 	obj->unstable = unstable;
 	obj->pokemon = pokemon;
+	obj->pokeball = pokeball;
 	return obj;
 }
 
@@ -72,7 +73,8 @@ static void add_objects(State state, float start_x)
 			i < 3 || rand() % 2 == 0 ? MOVING_UP : MOVING_DOWN, // random initial move (first 3 always up)
 			0.6 + 3*(rand()%100)/100, 							// speed randomly in the interval [0.6, 3.6]
 			i > 0 && (rand() % 10) == 0, 						// 10% (random) platforms are unstable (except the first one)
-			NOTHING												// is not pokemon
+			NOTHING,											// is not pokemon
+			NO_POKEBALL											// is not pokeball
 		);
 		vector_insert_last(state->objects, platform);
 
@@ -88,7 +90,8 @@ static void add_objects(State state, float start_x)
 				IDLE, 											// no movement
 				0, 												// speed 0
 				false, 											// 'unstable' always false for stars
-				rand() % 16										// one of the 15 pokemons (random)
+				rand() % 16,									// one of the 15 pokemons (random)
+				NO_POKEBALL
 			);
 			vector_insert_last(state->objects, pokemon);
 		}
@@ -116,16 +119,25 @@ static Object find_max_platform(State state)
 	for (int i = 1; i < vector_size(state->objects); i++)
 	{
 		Object obj = vector_get_at(state->objects, i);
-		if (obj->rect.x > max->rect.x)
+		if (obj->rect.x > max->rect.x && obj->type == PLATFORM)
 			max = obj;
 	}
 
 	return max;
 }
 
+static bool collision_success(Pokeball pokeball)
+{
+	return pokeball == POKEBALL ? rand() % 40 == 0 : pokeball == ULTRABALL ? rand() % 30 == 0 : true;
+}
+
+static Pokeball upgrade_pokeball(int score)
+{
+	return score <= 35 ? POKEBALL : score <= 95 ? ULTRABALL : MASTERBALL;
+}
+
 State state_create() 
 {
-	srand(time(NULL));
 	// Create the state
 	State state = malloc(sizeof(*state));
 
@@ -151,7 +163,8 @@ State state_create()
 		IDLE, 							// no initial vertical movement
 		0, 								// initial speed 0
 		false, 							// "unstable" always false for ball
-		NOTHING							// is not pokemon
+		NOTHING,						// is not pokemon
+		POKEBALL
 	);
 
 	return state;
@@ -191,7 +204,8 @@ void state_update(State state, KeyState keys)
 		Object last_platform = find_max_platform(state);
 		update_ball(state->info.ball, keys, state->speed_factor);
 
-		if (state->info.ball->vert_mov == IDLE) // in each frame the falling state is made so that a collision can occur
+		// in each frame the falling state is made so that a collision can occur
+		if (state->info.ball->vert_mov == IDLE)
 		{
 			state->info.ball->vert_mov = FALLING;
 			state->info.ball->vert_speed = 1.5;
@@ -207,12 +221,19 @@ void state_update(State state, KeyState keys)
 			{
 				if (obj->type == POKEMON)
 				{
-					state->info.score += is_legendary(obj->pokemon) ? 15 : 10;
-					vector_remove(state->objects, i);		// remove the pokemon
+					bool success = collision_success(state->info.ball->pokeball);
+
+					if (success)
+					{
+						state->info.score += is_legendary(obj->pokemon) ? 15 : 10;
+						vector_remove(state->objects, i);	
+					}
+							
+					state->info.ball->pokeball = upgrade_pokeball(state->info.score);				
 				}
 				else if (obj->type == PLATFORM && state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height))
 				{
-					state->info.ball->rect.y = obj->rect.y - state->info.ball->rect.height;
+					state->info.ball->rect.y = obj->rect.y - state->info.ball->rect.height + 2;
 					state->info.ball->vert_mov = IDLE;
 				}
 			}
@@ -220,7 +241,7 @@ void state_update(State state, KeyState keys)
 
 		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH)
 		{
-			add_objects(state, last_platform->rect.x + 50);
+			add_objects(state, last_platform->rect.x + 100);
 			state->speed_factor *=  1.1;
 		} 
 
