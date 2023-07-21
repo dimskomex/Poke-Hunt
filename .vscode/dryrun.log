@@ -1,0 +1,51 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex'
+make -C programs/game
+make[1]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game'
+gcc -Wall -Werror -g -I../../include   -c -o game.o game.c
+gcc -Wall -Werror -g -I../../include   -c -o ../../modules/state.o ../../modules/state.c
+gcc -Wall -Werror -g -I../../include   -c -o ../../modules/set_utils.o ../../modules/set_utils.c
+gcc -Wall -Werror -g -I../../include   -c -o interface.o interface.c
+make -C ../../lib k08.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+ 
+cp k08_linux.a k08.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+make -C ../../lib libraylib.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+cp libraylib_linux.a libraylib.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+gcc game.o ../../modules/state.o ../../modules/set_utils.o interface.o ../../lib/k08.a ../../lib/libraylib.a -o game -lm -ldl -lpthread -lGL
+make[1]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game'
+make -C programs/game_example
+make[1]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game_example'
+gcc -Wall -Werror -g -I../../include   -c -o game_example.o game_example.c
+gcc -Wall -Werror -g -I../../include   -c -o state.o state.c
+gcc -Wall -Werror -g -I../../include   -c -o interface.o interface.c
+make -C ../../lib k08.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+cp k08_linux.a k08.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+make -C ../../lib libraylib.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+cp libraylib_linux.a libraylib.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+gcc game_example.o state.o interface.o ../../lib/k08.a ../../lib/libraylib.a -o game_example -lm -ldl -lpthread -lGL
+make[1]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game_example'
+make -C tests all
+make[1]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/tests'
+gcc -Wall -Werror -g -I../include   -c -o state_test.o state_test.c
+gcc -Wall -Werror -g -I../include   -c -o ../modules/state.o ../modules/state.c
+make -C ../lib k08.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+cp k08_linux.a k08.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+make -C ../lib libraylib.a
+make[2]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+cp libraylib_linux.a libraylib.a
+make[2]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/lib'
+gcc -Wall -Werror -g -I../include   -c -o ../modules/set_utils.o ../modules/set_utils.c
+gcc state_test.o ../modules/state.o ../lib/k08.a ../lib/libraylib.a ../modules/set_utils.o -o state_test -lm -ldl -lpthread -lGL
+make[1]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/tests'
+make: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex'
+ 

@@ -1,0 +1,1153 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make -C programs/game
+# make[1]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game'
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue May  9 16:46:18 2023
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+LC_NAME = el_GR.UTF-8
+# environment
+LC_NUMERIC = el_GR.UTF-8
+# environment
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
+# environment
+VSCODE_CWD = /home/dimitris
+# environment
+LC_ADDRESS = el_GR.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/dimitris/Documents/data_structures/2023-project-1-dimskomex
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/dimitris/.config/Code/CachedData/252e5463d60e63238250799aef7375787f68b4ee
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.N7PK41
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrRw
+# makefile
+CURDIR := /home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile', line 4)
+MODULES = ../../modules
+# environment
+MFLAGS = -pqrRw
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+WAYLAND_DISPLAY = wayland-0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from '../../lib/libraylib.mk', line 1)
+MAKEFILE_LIST := Makefile ../../lib/libraylib.mk
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 17055
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SESSION_MANAGER = local/dimskomex:@/tmp/.ICE-unix/1782,unix/dimskomex:/tmp/.ICE-unix/1782
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# makefile (from 'Makefile', line 2)
+LIB = ../../lib
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# makefile (from 'Makefile', line 17)
+EXEC = game
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 3)
+INCLUDE = ../../include
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile (from 'Makefile', line 14)
+OBJS = game.o $(MODULES)/state.o $(MODULES)/set_utils.o interface.o $(LIB)/k08.a $(LIB)/libraylib.a
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 20)
+ARGS = 
+# environment
+MAKELEVEL := 1
+# environment
+IM_CONFIG_CHECK_ENV = 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/dimitris/.local/bin:/home/dimitris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = el_GR.UTF-8
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = el_GR.UTF-8
+# environment
+INVOCATION_ID = f78dba80eb394cd490ad1965ef7c708b
+# environment
+USERNAME = dimitris
+# environment
+GNOME_SETUP_DISPLAY = :1
+# environment
+LC_TELEPHONE = el_GR.UTF-8
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
++F = $(notdir $+)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = dimitris
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile
+.DEFAULT_GOAL := game
+# environment
+SYSTEMD_EXEC_PID = 1800
+# environment
+DISPLAY = :0
+# environment
+USER = dimitris
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# 'override' directive
+.SHELLSTATUS := 0
+# makefile (from '../../lib/libraylib.mk', line 25)
+LDFLAGS = -lm -ldl -lpthread -lGL
+# environment
+MANAGERPID = 1583
+# environment
+LC_MEASUREMENT = el_GR.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 17055
+# environment
+_ = /usr/share/code/code
+# environment
+LC_PAPER = el_GR.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 10)
+CFLAGS = -Wall -Werror -g -I$(INCLUDE)
+# environment
+JOURNAL_STREAM = 8:31212
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/dimitris
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-2fbacb0d-1.78-main.sock
+# environment
+IM_CONFIG_PHASE = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 7)
+CC = gcc
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+GDMSESSION = ubuntu
+# environment
+LC_IDENTIFICATION = el_GR.UTF-8
+# variable set hash-table stats:
+# Load=112/1024=11%, Rehash=0, Collisions=10/164=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 66313, inode 4994183): 10 files, no impossibilities.
+
+# 10 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+../../lib/%.a:
+#  recipe to execute (from 'Makefile', line 31):
+	$(MAKE) -C $(LIB) $*.a
+
+# 1 implicit rules, 0 (0.0%) terminal.
+# Files
+
+game: game.o ../../modules/state.o ../../modules/set_utils.o interface.o ../../lib/k08.a ../../lib/libraylib.a
+#  Implicit rule search has not been done.
+#  Last modified 2023-05-07 18:05:43.757990412
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 27):
+	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
+
+# Not a target:
+../../modules/state.o:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-07 18:05:43.681991469
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+interface.o:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-07 18:05:43.713991023
+#  File has been updated.
+#  Successfully updated.
+ 
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-06 16:38:41.084075574
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 34):
+	rm -f $(OBJS) $(EXEC)
+
+valgrind: game
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 40):
+	valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all ./$(EXEC) $(ARGS)
+
+# Not a target:
+../../lib/libraylib.mk:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-06 16:38:41.060075708
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/libraylib.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'libraylib'
+#  Last modified 2023-05-07 18:05:43.717990968
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 31):
+	$(MAKE) -C $(LIB) $*.a
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+run: game
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 37):
+	./$(EXEC) $(ARGS)
+
+# Not a target:
+../../modules/set_utils.o:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-07 18:05:43.693991302
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+game.o:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-07 18:05:43.649991913
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/k08.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'k08'
+#  Last modified 2023-05-07 18:05:43.713991023
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 31):
+	$(MAKE) -C $(LIB) $*.a
+
+# files hash-table stats:
+# Load=14/1024=1%, Rehash=0, Collisions=0/36=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 26 / storage = 297 B / avg = 11 B
+# current buf: size = 8162 B / used = 297 B / count = 26 / avg = 11 B
+
+# strcache performance: lookups = 39 / hit rate = 33%
+# hash-table stats:
+# Load=26/8192=0%, Rehash=0, Collisions=0/39=0%
+# Finished Make data base on Tue May  9 16:46:18 2023
+
+# make[1]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game'
+make -C programs/game_example
+# make[1]: Entering directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game_example'
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue May  9 16:46:18 2023
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+LC_NAME = el_GR.UTF-8
+# environment
+LC_NUMERIC = el_GR.UTF-8
+# environment
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
+# environment
+VSCODE_CWD = /home/dimitris
+# environment
+LC_ADDRESS = el_GR.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/dimitris/Documents/data_structures/2023-project-1-dimskomex
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/dimitris/.config/Code/CachedData/252e5463d60e63238250799aef7375787f68b4ee
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.N7PK41
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrRw
+# makefile
+CURDIR := /home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game_example
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrRw
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+WAYLAND_DISPLAY = wayland-0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from '../../lib/libraylib.mk', line 1)
+MAKEFILE_LIST := Makefile ../../lib/libraylib.mk
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 17055
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SESSION_MANAGER = local/dimskomex:@/tmp/.ICE-unix/1782,unix/dimskomex:/tmp/.ICE-unix/1782
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# makefile (from 'Makefile', line 2)
+LIB = ../../lib
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# makefile (from 'Makefile', line 16)
+EXEC = game_example
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 3)
+INCLUDE = ../../include
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile (from 'Makefile', line 13)
+OBJS = game_example.o state.o interface.o $(LIB)/k08.a $(LIB)/libraylib.a
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+ 
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 19)
+ARGS = 
+# environment
+MAKELEVEL := 1
+# environment
+IM_CONFIG_CHECK_ENV = 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/dimitris/.local/bin:/home/dimitris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = el_GR.UTF-8
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = el_GR.UTF-8
+# environment
+INVOCATION_ID = f78dba80eb394cd490ad1965ef7c708b
+# environment
+USERNAME = dimitris
+# environment
+GNOME_SETUP_DISPLAY = :1
+# environment
+LC_TELEPHONE = el_GR.UTF-8
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
++F = $(notdir $+)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = dimitris
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile
+.DEFAULT_GOAL := game_example
+# environment
+SYSTEMD_EXEC_PID = 1800
+# environment
+DISPLAY = :0
+# environment
+USER = dimitris
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# 'override' directive
+.SHELLSTATUS := 0
+# makefile (from '../../lib/libraylib.mk', line 25)
+LDFLAGS = -lm -ldl -lpthread -lGL
+# environment
+MANAGERPID = 1583
+# environment
+LC_MEASUREMENT = el_GR.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 17055
+# environment
+_ = /usr/share/code/code
+# environment
+LC_PAPER = el_GR.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 9)
+CFLAGS = -Wall -Werror -g -I$(INCLUDE)
+# environment
+JOURNAL_STREAM = 8:31212
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/dimitris
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-2fbacb0d-1.78-main.sock
+# environment
+IM_CONFIG_PHASE = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 6)
+CC = gcc
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+GDMSESSION = ubuntu
+# environment
+LC_IDENTIFICATION = el_GR.UTF-8
+# variable set hash-table stats:
+# Load=111/1024=11%, Rehash=0, Collisions=7/161=4%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 66313, inode 4994191): 8 files, no impossibilities.
+
+# 8 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+../../lib/%.a:
+#  recipe to execute (from 'Makefile', line 30):
+	$(MAKE) -C $(LIB) $*.a
+
+# 1 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+game_example.o:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+interface.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-06 16:38:41.084075574
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+state.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 33):
+	rm -f $(OBJS) $(EXEC)
+
+valgrind: game_example
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 39):
+	valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all ./$(EXEC) $(ARGS)
+
+# Not a target:
+../../lib/libraylib.mk:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-06 16:38:41.060075708
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/libraylib.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+run: game_example
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 36):
+	./$(EXEC) $(ARGS)
+
+game_example: game_example.o state.o interface.o ../../lib/k08.a ../../lib/libraylib.a
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
+
+# Not a target:
+../../lib/k08.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=13/1024=1%, Rehash=0, Collisions=0/32=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 24 / storage = 284 B / avg = 11 B
+# current buf: size = 8162 B / used = 284 B / count = 24 / avg = 11 B
+
+# strcache performance: lookups = 34 / hit rate = 29%
+# hash-table stats:
+# Load=24/8192=0%, Rehash=0, Collisions=0/34=0%
+# Finished Make data base on Tue May  9 16:46:18 2023
+
+# make[1]: Leaving directory '/home/dimitris/Documents/data_structures/2023-project-1-dimskomex/programs/game_example'
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue May  9 16:46:18 2023
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+LC_NAME = el_GR.UTF-8
+# environment
+LC_NUMERIC = el_GR.UTF-8
+# environment
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
+# environment
+VSCODE_CWD = /home/dimitris
+# environment
+LC_ADDRESS = el_GR.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/dimitris/Documents/data_structures/2023-project-1-dimskomex
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/dimitris/.config/Code/CachedData/252e5463d60e63238250799aef7375787f68b4ee
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.N7PK41
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/dimitris/Documents/data_structures/2023-project-1-dimskomex
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+WAYLAND_DISPLAY = wayland-0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+ 
+make[1]: *** No rule to make target 'game_example.o', needed by 'game_example'.  Stop.
+make: *** [Makefile:15: programs-game_example] Error 2
+
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 17055
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 8)
+PROGRAMS = $(subst programs/, , $(wildcard programs/*))
+# environment
+SESSION_MANAGER = local/dimskomex:@/tmp/.ICE-unix/1782,unix/dimskomex:/tmp/.ICE-unix/1782
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SHLVL = 0
+# environment
+MAKELEVEL := 0
+# environment
+IM_CONFIG_CHECK_ENV = 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/dimitris/.local/bin:/home/dimitris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = el_GR.UTF-8
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = el_GR.UTF-8
+# environment
+INVOCATION_ID = f78dba80eb394cd490ad1965ef7c708b
+# environment
+USERNAME = dimitris
+# environment
+GNOME_SETUP_DISPLAY = :1
+# environment
+LC_TELEPHONE = el_GR.UTF-8
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
++F = $(notdir $+)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = dimitris
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile
+.DEFAULT_GOAL := all
+# environment
+SYSTEMD_EXEC_PID = 1800
+# environment
+DISPLAY = :0
+# environment
+USER = dimitris
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# environment
+MANAGERPID = 1583
+# environment
+LC_MEASUREMENT = el_GR.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 17055
+# environment
+_ = /usr/share/code/code
+# environment
+LC_PAPER = el_GR.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+JOURNAL_STREAM = 8:31212
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/dimitris
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-2fbacb0d-1.78-main.sock
+# environment
+IM_CONFIG_PHASE = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+GDMSESSION = ubuntu
+# environment
+LC_IDENTIFICATION = el_GR.UTF-8
+# variable set hash-table stats:
+# Load=104/1024=10%, Rehash=0, Collisions=3/147=2%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 66313, inode 4992849): 14 files, no impossibilities.
+# programs (device 66313, inode 4994182): 4 files, no impossibilities.
+
+# 18 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+programs-%:
+#  recipe to execute (from 'Makefile', line 15):
+	$(MAKE) -C programs/$*
+
+run-programs-%:
+#  recipe to execute (from 'Makefile', line 26):
+	$(MAKE) -C programs/$* run
+
+clean-programs-%:
+#  recipe to execute (from 'Makefile', line 35):
+	$(MAKE) -C programs/$* clean
+
+# 3 implicit rules, 0 (0.0%) terminal.
+# Files
+
+programs-game:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'game'
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := programs-game
+# automatic
+# * := game
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/14=14%
+#  recipe to execute (from 'Makefile', line 15):
+	$(MAKE) -C programs/$*
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2023-05-06 16:38:41.056075731
+#  File has been updated.
+#  Successfully updated.
+
+lib:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean: clean-programs-game clean-programs-game_example
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 38):
+	$(MAKE) -C tests clean
+	$(MAKE) -C lib clean
+
+run-programs: run-programs-game run-programs-game_example
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+run-programs-game_example:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+clean-programs-game_example:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+tests:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 20):
+	$(MAKE) -C tests all
+
+# Not a target:
+clean-programs-game:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: programs tests
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+
+run: run-tests run-programs
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+programs: programs-game programs-game_example
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+
+programs-game_example:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'game_example'
+#  Modification time never checked.
+#  File has been updated.
+#  Failed to be updated.
+# automatic
+# @ := programs-game_example
+# automatic
+# * := game_example
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+ 
+# Load=8/32=25%, Rehash=0, Collisions=2/14=14%
+#  recipe to execute (from 'Makefile', line 15):
+	$(MAKE) -C programs/$*
+
+run-tests:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 31):
+	$(MAKE) -C tests run
+
+.PHONY: programs tests lib run run-programs run-tests clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+run-programs-game:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=18/1024=2%, Rehash=0, Collisions=0/53=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 35 / storage = 390 B / avg = 11 B
+# current buf: size = 8162 B / used = 390 B / count = 35 / avg = 11 B
+
+# strcache performance: lookups = 66 / hit rate = 46%
+# hash-table stats:
+# Load=35/8192=0%, Rehash=0, Collisions=0/66=0%
+# Finished Make data base on Tue May  9 16:46:18 2023
+
+ 
