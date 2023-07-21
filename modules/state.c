@@ -59,7 +59,6 @@ static Object create_object(ObjectType type, float x, float y, float width, floa
 // in include/raylib.h). x,y refer to the top-left corner of the Rectangle.
 static void add_objects(State state, float start_x) 
 {
-	srand(time(NULL));
 	// Add PLATFORM_NUM platforms, with random attributes.
 	for (int i = 0; i < PLATFORM_NUM; i++) 
 	{
@@ -193,13 +192,13 @@ List state_objects(State state, float x_from, float x_to)
 
 static bool is_paused(bool paused, KeyState keys)
 {
-	return (!paused || (keys->n && paused));
+	return !(!paused || (keys->n && paused));
 }
 
 void state_update(State state, KeyState keys)
 {	
 
-	if (!is_paused(state->info.playing, keys)) 
+	if (!is_paused(state->info.paused, keys)) 
 	{
 		Object last_platform = find_max_platform(state);
 		update_ball(state->info.ball, keys, state->speed_factor);
@@ -253,7 +252,13 @@ void state_update(State state, KeyState keys)
 		new_state(state);
 
 	if (keys->p)
-		state->info.paused = !state->info.paused;
+	{
+		if (state->info.paused) 
+			state->info.paused = false;
+
+		else 
+			state->info.paused = true;
+	}
 }
 
 void state_destroy(State state)

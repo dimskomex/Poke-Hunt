@@ -2,7 +2,7 @@
 
 void update_ball(Object ball, KeyState keys, float speed_factor)
 {
-	ball->rect.x += keys->right ? 6 : keys->left ? 1 : 4; 
+	ball->rect.x += keys->right ? 6 : keys->left ? 0.8 : 4; 
 
 	if (ball->vert_mov == JUMPING)
 	{
