@@ -11,5 +11,5 @@ void collision_with_platform(Object pokeball, Object platform)
 
 bool collision_with_pokemon(Pokeball pokeball)
 {
-    return pokeball == POKEBALL ? rand() % 40 == 0 : pokeball == ULTRABALL ? rand() % 30 == 0 : true;
+    return pokeball == CLASSIC_POKEBALL ? rand() % 40 == 0 : pokeball == GREAT_BALL ? rand() % 35 == 0 : pokeball == ULTRABALL ? rand() % 30 == 0 : true;
 }

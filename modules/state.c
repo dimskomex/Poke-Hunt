@@ -22,7 +22,7 @@ struct state
 
 static bool is_legendary(Pokemon pokemon)
 {
-	return pokemon == ZEKROM || pokemon == RESHIRAM || pokemon == ARCEUS || pokemon == REYQUAZA;
+	return pokemon == ZEKROM || pokemon == RESHIRAM || pokemon == ARCEUS || pokemon == REYQUAZA || pokemon == MEWTWO;
 }
 
 // Creates and returns an object
@@ -90,7 +90,7 @@ static void add_objects(State state, float start_x)
 				IDLE, 											// no movement
 				0, 												// speed 0
 				false, 											// 'unstable' always false for stars
-				rand() % 15,									// one of the 14 pokemons (random)
+				rand() % 17 + 1,								// one of the 14 pokemons (random)
 				NO_POKEBALL										// isn't pokeball
 			);
 			vector_insert_last(state->objects, pokemon);
@@ -132,21 +132,21 @@ State state_create()
 	State state = malloc(sizeof(*state));
 
 	// General informations
-	state->info.playing = true; 	// The game starts immediately
-	state->info.paused = false; 	// Without being paused.
-	state->speed_factor = 1; 		// Normal speed
-	state->info.score = 0; 			// Initial score 0
+	state->info.playing = true; 		// The game starts immediately
+	state->info.paused = false; 		// Without being paused.
+	state->speed_factor = 1; 			// Normal speed
+	state->info.score = 0; 				// Initial score 0
 
 	// Create the vector of objects, and add objects
 	// starting at x = 0.
 	state->objects = vector_create(0, NULL);
 	add_objects(state, 0);
 
-	// Create the ball by placing it on the first platform
+	// Create the pokeball by placing it on the first platform
 	Object first_platform = vector_get_at(state->objects, 0);
 	state->info.ball = create_object
 	(
-		BALL,
+		POKEBALL,
 		first_platform->rect.x, 		// x at the beginning of the platform
 		first_platform->rect.y - 40, 	// y on platform
 		45, 45, 						// width, height

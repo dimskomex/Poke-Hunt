@@ -32,7 +32,7 @@ void update_pokeball(Object pokeball, KeyState keys, float speed_factor, int sco
 		pokeball->vert_speed = 17;
 	}
 
-	pokeball->pokeball = score <= 35 ? POKEBALL : score <= 95 ? ULTRABALL : MASTERBALL;
+	pokeball->pokeball = score <= 20 ? CLASSIC_POKEBALL : score <= 40 ? GREAT_BALL : score <= 100 ? ULTRABALL : MASTERBALL;
 }
 
 void update_platform(Object platform, float speed_factor)

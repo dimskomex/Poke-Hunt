@@ -3,7 +3,7 @@
 ## Game theme: 
 * You're a pokeball who scores points by catching pokemon. If the pokemon is legendary, you earn 15 points, otherwise, 10 points. The goal is to collect as many points as you can by catching more and more pokemon.
 
-* Catching pokemon is not that simple, as pokeball will rely on platforms that you will have to jump from one to the other, because the pokeball will fall down. If this is done, the game stops. This is not the only problem. A classic Pokeball isn't bound to catch all pokemon, so you'll need to try to catch it with great difficulty. As you catch pokemon and get more points, Pokeball upgrades. If the points exceed 35, it is upgraded to UltraBall, where it catches Pokemon with greater ease, and if they exceed 95, it becomes a MasterBall where it catches all Pokemon!
+* Catching pokemon is not that simple, as pokeball will rely on platforms that you will have to jump from one to the other, because the pokeball will fall down. If this is done, the game stops. This is not the only problem. A classic Pokeball isn't bound to catch all pokemon, so you'll need to try to catch it with great difficulty. As you catch pokemon and get more points, Pokeball upgrades. If the points exceed 20, it is upgraded to GreatBall, else if the points exceed 40, it is upgraded to UltraBall where it catches Pokemon with greater ease, and if they exceed 100, it becomes a MasterBall where it catches all Pokemon!
 
 * Beware of red platforms, you have to be fast because they hide traps!
 

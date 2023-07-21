@@ -7,9 +7,12 @@
 #define SCREEN_WIDTH 900 		// Width of the screen
 #define SCREEN_HEIGHT 450 		// Height of the screen
 
+#define NO_POKEMON 0
+#define NO_POKEBALL 0
+
 typedef enum 
 {
-	BALL, 
+	POKEBALL, 
 	PLATFORM, 
 	POKEMON
 } ObjectType;
@@ -25,8 +28,7 @@ typedef enum
 
 typedef enum 
 {
-	NO_POKEMON,
-	STARYU, 
+	STARYU = 1, 
 	STARMIE, 
 	BULBASAUR, 
 	CHARMANDER, 
@@ -39,13 +41,16 @@ typedef enum
 	SNORLAX, 
 	SQUIRTLE, 
 	EEVEE, 
-	GENGAR
+	GENGAR,
+	LUCARIO,
+	MEWTWO,
+	HYPNO
 } Pokemon;
 
 typedef enum 
 {
-	NO_POKEBALL,
-	POKEBALL, 
+	CLASSIC_POKEBALL = 1, 
+	GREAT_BALL,
 	ULTRABALL, 
 	MASTERBALL
 } Pokeball; 
