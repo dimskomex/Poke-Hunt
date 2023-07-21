@@ -1,4 +1,4 @@
-#include "state.h"
+#include "updates.h"
 
 void update_ball(Object ball, KeyState keys, float speed_factor)
 {
@@ -6,19 +6,20 @@ void update_ball(Object ball, KeyState keys, float speed_factor)
 
 	if (ball->vert_mov == JUMPING)
 	{
-		ball->rect.y -= (ball->vert_speed * speed_factor); // αύξηση προς τα πάνω => μείωση του y 
+		ball->rect.y -= (ball->vert_speed * speed_factor); 		// increase upwards => decrease in y 
 		ball->vert_speed *= 0.85;
 		
 		if (ball->vert_speed <= 0.5) 
 			ball->vert_mov = FALLING;
 
-		if (ball->rect.y == SCREEN_HEIGHT) // δεν αναφέρεται κάπου, αλλά άμα έχει φτάσει στο μέγιστο δυνατό ύψος όταν κανει jump, πρέπει να πέφτει η μπάλα
+		// if he has reached the maximum possible height when jumping, the Pokeball must fall
+		if (ball->rect.y == SCREEN_HEIGHT) 
 			ball->vert_mov = FALLING; 
 
 	}
 	else if (ball->vert_mov == FALLING)
 	{
-		ball->rect.y += (ball->vert_speed * speed_factor); // μείωση προς τα κάτω => αύξηση του y
+		ball->rect.y += (ball->vert_speed * speed_factor);	 	// decrease downwards => increase in y
 		ball->vert_speed *= 1.1;
 
 		if (ball->vert_speed > 7)
@@ -56,7 +57,7 @@ void update_platform(Object platform, Object ball, float speed_factor)
 	if (platform->unstable && CheckCollisionRecs(ball->rect, platform->rect))
 	{
 		platform->vert_mov = FALLING;
-		platform->rect.y += 4;
-		ball->rect.y += 4;
+		ball->vert_mov = IDLE;
+		ball->rect.y = platform->rect.y - platform->rect.height - 5;
 	}
 }
