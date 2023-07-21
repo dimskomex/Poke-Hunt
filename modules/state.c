@@ -252,13 +252,7 @@ void state_update(State state, KeyState keys)
 		new_state(state);
 
 	if (keys->p)
-	{
-		if (state->info.paused) 
-			state->info.paused = false;
-
-		else 
-			state->info.paused = true;
-	}
+		state->info.paused  = !state->info.paused;
 }
 
 void state_destroy(State state)
