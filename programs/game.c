@@ -10,7 +10,6 @@ void update_and_draw(void)
 {
     struct key_state keys;
 
-    keys.down = IsKeyDown(KEY_DOWN);
     keys.up = IsKeyDown(KEY_UP);
     keys.enter = IsKeyDown(KEY_ENTER);
     keys.left = IsKeyDown(KEY_LEFT);
