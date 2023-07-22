@@ -6,6 +6,7 @@
 #include "state.h"
 #include "updates.h"
 #include "collisions.h"
+#include "create.h"
 
 #define MIN_HEIGHT (SCREEN_HEIGHT - 45)
 
@@ -19,11 +20,6 @@ struct state
 	struct state_info info; 	// General information about the state of the game
 	float speed_factor; 		// Speed multiplier (1 = normal speed, 2 = double, etc)
 };
-
-static bool is_legendary(Pokemon pokemon)
-{
-	return pokemon == ZEKROM || pokemon == RESHIRAM || pokemon == ARCEUS || pokemon == REYQUAZA || pokemon == MEWTWO;
-}
 
 // Creates and returns an object
 static Object create_object(ObjectType type, float x, float y, float width, float height, VerticalMovement vert_mov, float speed, bool unstable, Pokemon pokemon, Pokeball pokeball) 
@@ -90,7 +86,7 @@ static void add_objects(State state, float start_x)
 				IDLE, 											// no movement
 				0, 												// speed 0
 				false, 											// 'unstable' always false for stars
-				rand() % 17 + 1,								// one of the 14 pokemons (random)
+				create_pokemon(),
 				NO_POKEBALL										// isn't pokeball
 			);
 			vector_insert_last(state->objects, pokemon);
@@ -186,6 +182,11 @@ static bool is_paused(bool paused, KeyState keys)
 	return !(!paused || (keys->n && paused));
 }
 
+static int add_score(Pokemon pokemon)
+{
+	return (pokemon >= MEWTWO && pokemon <= ZEKROM) ? 15 : (pokemon >= GYARADOS && pokemon <= LUCARIO) ? 10 : 5;
+}
+
 void state_update(State state, KeyState keys)
 {	
 
@@ -211,9 +212,9 @@ void state_update(State state, KeyState keys)
 			{
 				if (obj->type == POKEMON)
 				{
-					if (collision_with_pokemon(state->info.ball->pokeball))
+					if (collision_with_pokemon(state->info.ball->pokeball, obj->pokemon))
 					{
-						state->info.score += is_legendary(obj->pokemon) ? 15 : 10;
+						state->info.score += add_score(obj->pokemon);
 						vector_remove(state->objects, i);	
 					}				
 				}
@@ -224,7 +225,7 @@ void state_update(State state, KeyState keys)
 
 		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH)
 		{
-			add_objects(state, last_platform->rect.x + 100);
+			add_objects(state, last_platform->rect.x + 120);
 			state->speed_factor *=  1.1;
 		} 
 

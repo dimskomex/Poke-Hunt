@@ -6,10 +6,11 @@
 #include "interface.h"
 
 // Photos
-Texture pokeball_img, greatball_img, ultraball_img, masterball_img;
+Texture pokeball_img, greatball_img, ultraball_img, timerball_img, masterball_img;
 Texture mewtwo_img, arceus_img, reyquaza_img, zekrom_img, reshiram_img; 
 Texture staryu_img, starmie_img, bulbasaur_img, charmander_img, picachu_img, gengar_img;
-Texture torterra_img, eevee_img, snorlax_img, squirtle_img, lucario_img, hypno_img;
+Texture torterra_img, eevee_img, snorlax_img, squirtle_img, lucario_img, hypno_img, wobbuffet_img;
+Texture azumarill_img, gyarados_img;
 
 // Sounds
 Sound music;
@@ -21,13 +22,13 @@ static Texture2D draw_pokemon(Pokemon pokemon)
 	pokemon == CHARMANDER ? charmander_img : pokemon == PICACHU ? picachu_img : pokemon == ZEKROM ? zekrom_img : pokemon == RESHIRAM ? 
 	reshiram_img : pokemon == ARCEUS ? arceus_img : pokemon == REYQUAZA ? reyquaza_img : pokemon == SNORLAX ? snorlax_img : pokemon == EEVEE ? eevee_img :
 	pokemon == TORTERRA ? torterra_img : pokemon == SQUIRTLE ? squirtle_img : pokemon == GENGAR ? gengar_img : pokemon == MEWTWO ? mewtwo_img :
-	pokemon == HYPNO ? hypno_img : lucario_img;
+	pokemon == HYPNO ? hypno_img : pokemon == LUCARIO ? lucario_img : pokemon == AZUMARILL ? azumarill_img : pokemon == WOBBUFFET ? wobbuffet_img : gyarados_img;
 }
 
 static Texture draw_pokeball(StateInfo info)
 {
-	return info->ball->pokeball == 	CLASSIC_POKEBALL ? pokeball_img : info->ball->pokeball == GREAT_BALL ? 
-									greatball_img : info->ball->pokeball == ULTRABALL ? ultraball_img : masterball_img; 
+	return info->ball->pokeball == 	CLASSIC_POKEBALL ? pokeball_img : info->ball->pokeball == GREAT_BALL ? greatball_img : 
+									info->ball->pokeball == ULTRABALL ? ultraball_img : info->ball->pokeball == TIMERBALL ? timerball_img:  masterball_img; 
 }
 
 void interface_init() 
@@ -41,6 +42,7 @@ void interface_init()
 	pokeball_img = LoadTextureFromImage(LoadImage("photos/pokeball.png"));
 	greatball_img = LoadTextureFromImage(LoadImage("photos/greatball.png"));
 	ultraball_img = LoadTextureFromImage(LoadImage("photos/ultraball.png"));
+	timerball_img = LoadTextureFromImage(LoadImage("photos/timerball.png"));
 	masterball_img = LoadTextureFromImage(LoadImage("photos/masterball.png"));
 
 	staryu_img = LoadTextureFromImage(LoadImage("photos/staryu.png"));
@@ -60,6 +62,10 @@ void interface_init()
 	lucario_img = LoadTextureFromImage(LoadImage("photos/lucario.png"));
 	mewtwo_img = LoadTextureFromImage(LoadImage("photos/mewtwo.png"));
 	hypno_img = LoadTextureFromImage(LoadImage("photos/hypno.png"));
+	gyarados_img = LoadTextureFromImage(LoadImage("photos/gyarados.png"));
+	wobbuffet_img = LoadTextureFromImage(LoadImage("photos/wobbuffet.png"));
+	azumarill_img = LoadTextureFromImage(LoadImage("photos/azumarill.png"));
+
 
 	// Load sounds
 	music = LoadSound("sounds/Pokémon_Black_and_White_2.mp3");

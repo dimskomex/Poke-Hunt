@@ -1,9 +1,52 @@
 # Poke-Hunt!
 
 ## Game theme: 
-* You're a pokeball who scores points by catching pokemon. If the pokemon is legendary, you earn 15 points, otherwise, 10 points. The goal is to collect as many points as you can by catching more and more pokemon.
+* You're a Pokeball who scores points by catching Pokemon. 
 
-* Catching pokemon is not that simple, as pokeball will rely on platforms that you will have to jump from one to the other, because the pokeball will fall down. If this is done, the game stops. This is not the only problem. A classic Pokeball isn't bound to catch all pokemon, so you'll need to try to catch it with great difficulty. As you catch pokemon and get more points, Pokeball upgrades. If the points exceed 20, it is upgraded to GreatBall, else if the points exceed 40, it is upgraded to UltraBall where it catches Pokemon with greater ease, and if they exceed 100, it becomes a MasterBall where it catches all Pokemon!
+      Classic Pokemon:      5 points
+      Iconic Pokemon:       10 points
+      Legendary Pokemon:    15 points
+
+  The goal is to collect as many points as you can by catching more and more pokemon.
+  
+* Classic Pokemon list:
+  
+      Staryu
+      Hypno
+      Starmie
+      Gengar
+      Snorlax
+      Torterra
+      Wobbuffet
+      Azumarill
+
+* Iconic Pokemon list:
+
+      Gyarados
+      Bulbasaur
+      Charmander
+      Picachu
+      Squirtle
+      Eevee
+      Lucario
+
+* Legendary Pokemon list:
+
+      Mewtwo
+      Reshiram
+      Arceus
+      Reyquaza
+      Zekrom
+
+
+
+* Catching Pokemon is not that simple, as Pokeball will rely on platforms that you will have to jump from one to the other, because the Pokeball will fall down. If this is done, the game stops. This is not the only problem. A classic Pokeball can't catch all Pokemon with ease (especially legendary ones). So you have to do a lot of collisions with Pokémon to get points. As you accumulate points, Pokeball is upgraded to GreatBall, UltraBall and TimerBall which can catch Pokémon more easily. The final stage is the MasterBall, which can catch all Pokemon directly!
+
+      score <= 20:                    Classic Pokeball
+      score > 20 and score <= 40:     GreatBall
+      score > 40 and score <= 80:     UltraBall
+      score > 80 and score <= 120:    TimerBall
+      score > 120:                    MasterBall
 
 * Beware of red platforms, you have to be fast because they hide traps!
 

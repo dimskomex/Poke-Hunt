@@ -1,4 +1,4 @@
-game_OBJS = game.o $(MODULES)/state.o $(MODULES)/interface.o $(MODULES)/updates.o $(MODULES)/collisions.o $(MODULES)/UsingLinkedList/ADTList.o $(MODULES)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a 
+game_OBJS = game.o $(MODULES)/state.o $(MODULES)/interface.o $(MODULES)/updates.o $(MODULES)/collisions.o $(MODULES)/UsingLinkedList/ADTList.o $(MODULES)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a $(MODULES)/create.o 
 
 # Parameters of the raylib library
 include ../lib/libraylib.mk

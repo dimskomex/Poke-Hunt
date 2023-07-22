@@ -28,23 +28,31 @@ typedef enum
 
 typedef enum 
 {
-	STARYU = 1, 
+	// classic
+	STARYU = 1,
+	HYPNO, 
 	STARMIE, 
+	GENGAR,
+	SNORLAX, 
+	TORTERRA, 
+	WOBBUFFET,
+	AZUMARILL,
+
+	// iconic
+	GYARADOS,
 	BULBASAUR, 
 	CHARMANDER, 
-	PICACHU, 
-	ZEKROM, 
-	RESHIRAM, 
-	ARCEUS, 
-	REYQUAZA, 
-	TORTERRA, 
-	SNORLAX, 
+	PICACHU,  
 	SQUIRTLE, 
 	EEVEE, 
-	GENGAR,
 	LUCARIO,
+
+	// legendary
 	MEWTWO,
-	HYPNO
+	RESHIRAM, 
+	ARCEUS, 
+	REYQUAZA,
+	ZEKROM
 } Pokemon;
 
 typedef enum 
@@ -52,6 +60,7 @@ typedef enum
 	CLASSIC_POKEBALL = 1, 
 	GREAT_BALL,
 	ULTRABALL, 
+	TIMERBALL,
 	MASTERBALL
 } Pokeball; 
 
