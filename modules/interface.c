@@ -93,7 +93,7 @@ void interface_draw_frame(State state)
      StateInfo info = state_info(state);
 	float x_offset;
 
-	x_offset = SCREEN_WIDTH - 193 - info->ball->rect.x;
+	x_offset = SCREEN_WIDTH - 205 - info->ball->rect.x;
 
 	DrawTexture(draw_pokeball(info), SCREEN_WIDTH / 4, info->ball->rect.y, WHITE);
 

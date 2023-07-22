@@ -62,15 +62,15 @@ static void add_objects(State state, float start_x)
 		Object platform = create_object
 		(
 			PLATFORM,
-			start_x + 150 + rand() % 80, 						// x with random distance from previous in interval [150, 230]
-			SCREEN_HEIGHT/4 + rand() % SCREEN_HEIGHT/2, 		// y random in the interval [SCREEN_HEIGHT/4, 3*SCREEN_HEIGHT/4]
-			i == 0 ? 250 : 50 + rand()%200, 					// width randomly in the interval [50, 250] (first always 250)
-			20, 												// height
-			i < 3 || rand() % 2 == 0 ? MOVING_UP : MOVING_DOWN, // random initial move (first 3 always up)
-			0.6 + 3*(rand()%100)/100, 							// speed randomly in the interval [0.6, 3.6]
-			i > 0 && (rand() % 10) == 0, 						// 10% (random) platforms are unstable (except the first one)
-			NO_POKEMON,											// isn't pokemon
-			NO_POKEBALL											// isn't pokeball
+			start_x + 150 + rand() % 80, 							// x with random distance from previous in interval [150, 230]
+			SCREEN_HEIGHT / 4 + rand() % SCREEN_HEIGHT / 2, 		// y random in the interval [SCREEN_HEIGHT/4, 3*SCREEN_HEIGHT/4]
+			i == 0 ? 250 : 50 + rand() % 200, 						// width randomly in the interval [50, 250] (first always 250)
+			20, 													// height
+			i < 3 || rand() % 2 == 0 ? MOVING_UP : MOVING_DOWN, 	// random initial move (first 3 always up)
+			0.6 + 3 * (rand() % 100) / 100, 						// speed randomly in the interval [0.6, 3.6]
+			i > 0 && (rand() % 10) == 0, 							// 10% (random) platforms are unstable (except the first one)
+			NO_POKEMON,												// isn't pokemon
+			NO_POKEBALL												// isn't pokeball
 		);
 		vector_insert_last(state->objects, platform);
 
@@ -80,19 +80,19 @@ static void add_objects(State state, float start_x)
 			Object pokemon = create_object
 			(
 				POKEMON,
-				start_x + 200 + rand() % 60, 					// x with a random distance from the previous platform in the interval [200,260]
-				SCREEN_HEIGHT/8 + rand() % SCREEN_HEIGHT/2, 	// y random in the interval [SCREEN_HEIGHT/8, 5*SCREEN_HEIGHT/8]
-				30, 30, 										// width, height
-				IDLE, 											// no movement
-				0, 												// speed 0
-				false, 											// 'unstable' always false for stars
+				start_x + 200 + rand() % 60, 						// x with a random distance from the previous platform in the interval [200,260]
+				SCREEN_HEIGHT / 8 + rand() % SCREEN_HEIGHT / 2, 	// y random in the interval [SCREEN_HEIGHT/8, 5*SCREEN_HEIGHT/8]
+				30, 30, 											// width, height
+				IDLE, 												// no movement
+				0, 													// speed 0
+				false, 												// 'unstable' always false for stars
 				create_pokemon(),
-				NO_POKEBALL										// isn't pokeball
+				NO_POKEBALL											// isn't pokeball
 			);
 			vector_insert_last(state->objects, pokemon);
 		}
 
-		start_x = platform->rect.x + platform->rect.width;		// move next items to the right
+		start_x = platform->rect.x + platform->rect.width;			// move next items to the right
 	}
 }
 
@@ -150,7 +150,7 @@ State state_create()
 		0, 								// initial speed 0
 		false, 							// "unstable" always false for ball
 		NO_POKEMON,						// is not pokemon
-		POKEBALL
+		CLASSIC_POKEBALL				// start with the classic pokeball
 	);
 
 	return state;
@@ -218,8 +218,9 @@ void state_update(State state, KeyState keys)
 						vector_remove(state->objects, i);	
 					}				
 				}
-				else if (obj->type == PLATFORM && state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height))
-					collision_with_platform(state->info.ball, obj);
+				else if (obj->type == PLATFORM) 
+					if (state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height))
+						collision_with_platform(state->info.ball, obj);
 			}
 		}
 
