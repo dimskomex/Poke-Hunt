@@ -28,7 +28,7 @@ static Texture2D draw_pokemon(Pokemon pokemon)
 static Texture draw_pokeball(StateInfo info)
 {
 	return info->ball->pokeball == 	CLASSIC_POKEBALL ? pokeball_img : info->ball->pokeball == GREAT_BALL ? greatball_img : 
-									info->ball->pokeball == ULTRABALL ? ultraball_img : info->ball->pokeball == TIMERBALL ? timerball_img:  masterball_img; 
+	info->ball->pokeball == ULTRABALL ? ultraball_img : info->ball->pokeball == TIMERBALL ? timerball_img:  masterball_img; 
 }
 
 void interface_init() 
