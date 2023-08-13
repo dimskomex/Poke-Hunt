@@ -25,36 +25,19 @@ bool collision_with_pokemon(Pokeball pokeball, Pokemon pokemon)
     switch (pokeball)
     {
         case CLASSIC_POKEBALL:
-            if (is_legendary(pokemon))
-                return x % 50 == 0;
-            else if (is_iconic(pokemon))
-                return x % 40 == 0;
-            else
-                return x % 30 == 0;
-    
+            return is_legendary(pokemon) ? x % 50 == 0 : is_iconic(pokemon) ? x % 40 == 0 : x % 30 == 0;
+
         case GREAT_BALL:
-            if (is_legendary(pokemon))
-                return x % 45 == 0;
-            else if (is_iconic(pokemon))
-                return x % 35 == 0;
-            else
-                return x % 25 == 0;
+            return is_legendary(pokemon) ? x % 45 == 0 : is_iconic(pokemon) ? x % 35 == 0 : x % 25 == 0;
 
         case ULTRABALL:
-            if (is_legendary(pokemon))
-                return x % 40 == 0;
-            else if (is_iconic(pokemon))
-                return x % 30 == 0;
-            else
-                return x % 20 == 0;
+            return is_legendary(pokemon) ? x % 40 == 0 : is_iconic(pokemon) ? x % 30 == 0 : x % 20 == 0;
 
         case TIMERBALL:
-            if (is_legendary(pokemon))
-                return x % 35 == 0;
-            else if (is_iconic(pokemon))
-                return x % 30 == 0;
-            else
-                return x % 20 == 0;
+            return is_legendary(pokemon) ? x % 35 == 0 : is_iconic(pokemon) ? x % 30 == 0 : x % 20 == 0;
+
+        case MASTERBALL:
+            return true;
     }
 
     return true;

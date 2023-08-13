@@ -225,10 +225,7 @@ void state_update(State state, KeyState keys)
 		}
 
 		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH)
-		{
-			add_objects(state, last_platform->rect.x + 120);
-			state->speed_factor *=  1.1;
-		} 
+			add_objects(state, last_platform->rect.x + 120), state->speed_factor *=  1.1;
 
 		if(!(state->info.ball->rect.y < MIN_HEIGHT)) 
 			game_over(&state->info);
