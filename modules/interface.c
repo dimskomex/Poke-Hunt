@@ -31,7 +31,7 @@ static Texture draw_pokeball(StateInfo info)
 	info->ball->pokeball == ULTRABALL ? ultraball_img : info->ball->pokeball == TIMERBALL ? timerball_img:  masterball_img; 
 }
 
-void interface_init() 
+void interface_init(void) 
 {
 	// Initialize the window
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Poke-Hunt");
@@ -75,7 +75,7 @@ void interface_init()
 	coin_sound = LoadSound("sounds/coin_sound.mp3");
 }
 
-void interface_close() 
+void interface_close(void) 
 {
 	CloseAudioDevice();
 	CloseWindow();

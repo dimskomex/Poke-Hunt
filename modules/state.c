@@ -122,7 +122,7 @@ static Object find_max_platform(State state)
 	return max;
 }
 
-State state_create() 
+State state_create(void) 
 {
 	// Create the state
 	State state = malloc(sizeof(*state));

@@ -108,7 +108,7 @@ typedef struct state* State;
 
 
 // Creates and returns the initial state of the game
-State state_create();
+State state_create(void);
 
 
 // Returns basic game information in state
