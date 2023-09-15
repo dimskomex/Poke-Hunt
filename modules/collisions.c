@@ -21,9 +21,8 @@ static bool is_iconic(Pokemon pokemon)
 
 bool collision_with_pokemon(Pokeball pokeball, Pokemon pokemon)
 {
-    int x = rand();
-    switch (pokeball)
-    {
+        int x = rand();
+        switch (pokeball) {
         case CLASSIC_POKEBALL:
             return is_legendary(pokemon) ? x % 50 == 0 : is_iconic(pokemon) ? x % 40 == 0 : x % 30 == 0;
 
@@ -38,7 +37,7 @@ bool collision_with_pokemon(Pokeball pokeball, Pokemon pokemon)
 
         case MASTERBALL:
             return true;
-    }
+        }
 
-    return true;
+        return true;
 }

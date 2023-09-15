@@ -57,10 +57,8 @@ static Object create_object(ObjectType type, float x, float y, float width, floa
 static void add_objects(State state, float start_x) 
 {
 	// Add PLATFORM_NUM platforms, with random attributes.
-	for (int i = 0; i < PLATFORM_NUM; i++) 
-	{
-		Object platform = create_object
-		(
+	for (int i = 0; i < PLATFORM_NUM; i++)  {
+		Object platform = create_object (
 			PLATFORM,
 			start_x + 150 + rand() % 80, 							// x with random distance from previous in interval [150, 230]
 			SCREEN_HEIGHT / 4 + rand() % SCREEN_HEIGHT / 2, 		// y random in the interval [SCREEN_HEIGHT/4, 3*SCREEN_HEIGHT/4]
@@ -75,10 +73,8 @@ static void add_objects(State state, float start_x)
 		vector_insert_last(state->objects, platform);
 
 		// On 50% of the platforms (random), except the first one, we add pokemon
-		if(i != 0 && rand() % 2 == 0) 
-		{
-			Object pokemon = create_object
-			(
+		if(i != 0 && rand() % 2 == 0) {
+			Object pokemon = create_object (
 				POKEMON,
 				start_x + 200 + rand() % 60, 						// x with a random distance from the previous platform in the interval [200,260]
 				SCREEN_HEIGHT / 8 + rand() % SCREEN_HEIGHT / 2, 	// y random in the interval [SCREEN_HEIGHT/8, 5*SCREEN_HEIGHT/8]
@@ -112,8 +108,7 @@ static void new_state(State state)
 static Object find_max_platform(State state)
 {
 	Object max = vector_get_at(state->objects, 0);
-	for (int i = 1; i < vector_size(state->objects); i++)
-	{
+	for (int i = 1; i < vector_size(state->objects); i++) {
 		Object obj = vector_get_at(state->objects, i);
 		if (obj->rect.x > max->rect.x && obj->type == PLATFORM)
 			max = obj;
@@ -140,8 +135,7 @@ State state_create(void)
 
 	// Create the pokeball by placing it on the first platform
 	Object first_platform = vector_get_at(state->objects, 0);
-	state->info.ball = create_object
-	(
+	state->info.ball = create_object (
 		POKEBALL,
 		first_platform->rect.x, 		// x at the beginning of the platform
 		first_platform->rect.y - 40, 	// y on platform
@@ -167,8 +161,7 @@ List state_objects(State state, float x_from, float x_to)
 	List result;
 
 	result = list_create(NULL);
-	for (int i = 0; i < vector_size(state->objects); i++)
-	{
+	for (int i = 0; i < vector_size(state->objects); i++) {
 		Object obj = vector_get_at(state->objects, i);
 		if (obj->rect.x >= x_from && obj->rect.x <= x_to)
 			list_insert_next(result, LIST_BOF, obj);
@@ -190,42 +183,36 @@ static int add_score(Pokemon pokemon)
 void state_update(State state, KeyState keys)
 {	
 
-	if (!is_paused(state->info.paused, keys)) 
-	{
+	if (!is_paused(state->info.paused, keys)) {
 		Object last_platform = find_max_platform(state);
 		update_pokeball(state->info.ball, keys, state->speed_factor, state->info.score);
 
 		// in each frame the falling state is made so that a collision can occur
-		if (state->info.ball->vert_mov == IDLE)
-		{
+		if (state->info.ball->vert_mov == IDLE) {
 			state->info.ball->vert_mov = FALLING;
 			state->info.ball->vert_speed = 1.5;
 		}
 
-		for (int i = 0; i < vector_size(state->objects); i++)
-		{
+		for (int i = 0; i < vector_size(state->objects); i++) {
 			Object obj = vector_get_at(state->objects, i);
 			if (obj->type == PLATFORM)
 				update_platform(obj, state->speed_factor);
 
-			if (CheckCollisionRecs(obj->rect, state->info.ball->rect))
-			{
-				if (obj->type == POKEMON)
-				{
-					if (collision_with_pokemon(state->info.ball->pokeball, obj->pokemon))
-					{
-						state->info.score += add_score(obj->pokemon);
-						vector_remove(state->objects, i);	
-					}				
-				}
-				else if (obj->type == PLATFORM) 
-					if (state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height))
+			if (CheckCollisionRecs(obj->rect, state->info.ball->rect)) {
+				if (obj->type == POKEMON && collision_with_pokemon(state->info.ball->pokeball, obj->pokemon)) {
+					state->info.score += add_score(obj->pokemon);
+					vector_remove(state->objects, i);	
+				} else if (obj->type == PLATFORM && state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height)) {
 						collision_with_platform(state->info.ball, obj);
+				}
+					
 			}
 		}
 
-		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH)
-			add_objects(state, last_platform->rect.x + 120), state->speed_factor *=  1.1;
+		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH) {
+			add_objects(state, last_platform->rect.x + 120);
+			state->speed_factor *=  1.1;
+		}
 
 		if(!(state->info.ball->rect.y < MIN_HEIGHT)) 
 			game_over(&state->info);

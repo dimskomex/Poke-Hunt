@@ -36,7 +36,7 @@ void interface_init(void)
 	// Initialize the window
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Poke-Hunt");
 	SetTargetFPS(60);
-    InitAudioDevice();
+    	InitAudioDevice();
 
 	// Load images
 	pokeball_img = LoadTextureFromImage(LoadImage("photos/pokeball.png"));
@@ -90,7 +90,7 @@ void interface_draw_frame(State state)
 	ClearBackground(BLACK);
 
 	// Draw the ball
-     StateInfo info = state_info(state);
+    	 StateInfo info = state_info(state);
 	float x_offset;
 
 	x_offset = SCREEN_WIDTH - 205 - info->ball->rect.x;
@@ -102,8 +102,7 @@ void interface_draw_frame(State state)
 	objs = state_objects(state, info->ball->rect.x - SCREEN_WIDTH, info->ball->rect.x + SCREEN_WIDTH);
 
 	Object obj;
-	for (ListNode node = list_first(objs); node != LIST_EOF; node = list_next(objs, node))
-	{
+	for (ListNode node = list_first(objs); node != LIST_EOF; node = list_next(objs, node)) {
 		obj = list_node_value(objs, node);
 
 		obj->type == PLATFORM ? DrawRectangle(obj->rect.x + x_offset - 450, obj->rect.y, obj->rect.width, obj->rect.height, obj->unstable ? RED : WHITE) : 
@@ -115,10 +114,8 @@ void interface_draw_frame(State state)
 	DrawFPS(SCREEN_WIDTH - 80, 0);
 
 	// If the game is over, draw the message to restart it
-	if (!info->playing) 
-	{
-		DrawText
-		(
+	if (!info->playing) {
+		DrawText (
 			"PRESS [ENTER] TO CATCH MORE POKEMON",
 			 GetScreenWidth() / 2 - MeasureText("PRESS [ENTER] TO CATCH MORE POKEMON", 20) / 2,
 			 GetScreenHeight() / 2 - 50, 20, GRAY
