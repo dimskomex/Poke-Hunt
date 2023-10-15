@@ -97,8 +97,7 @@ void vector_remove_last(Vector vec)
 	// Shrink the array if necessary so there is not too much wasted space.
 	// For complexity it's important to halve the size, that's all
 	// if capacity is four times the size (ie 75% of the array is empty).
-	if (vec->capacity > vec->size * 4 && vec->capacity > 2*VECTOR_MIN_CAPACITY) 
-	{
+	if (vec->capacity > vec->size * 4 && vec->capacity > 2*VECTOR_MIN_CAPACITY) {
 		vec->capacity /= 2;
 		vec->array = realloc(vec->array, vec->capacity * sizeof(*vec->array));
 	}
@@ -109,8 +108,7 @@ void vector_remove(Vector vec, int pos)
     // Shift elements to the left starting from the given position
     // by overwriting each element with the value of the next element.
     // Stop at the second-to-last element since the last element will be removed.
-    for (int i = pos; i < vector_size(vec) - 1; i++)
-    {
+    for (int i = pos; i < vector_size(vec) - 1; i++) {
         // Get the pointer to the current element at position i
         Pointer p = vector_get_at(vec, i + 1);
 
@@ -126,11 +124,12 @@ void vector_remove(Vector vec, int pos)
 Pointer vector_find(Vector vec, Pointer value, CompareFunc compare) 
 {
 	// cross the vector
-	for (int i = 0; i < vec->size; i++)
+	for (int i = 0; i < vec->size; i++) {
 		if (compare(vec->array[i].value, value) == 0)
-			return vec->array[i].value;		// Found
+			return vec->array[i].value;			// Found
+	}
 
-	return NULL;							// Not found
+	return NULL;								// Not found
 }
 
 DestroyFunc vector_set_destroy_value(Vector vec, DestroyFunc destroy_value) 
@@ -143,10 +142,11 @@ DestroyFunc vector_set_destroy_value(Vector vec, DestroyFunc destroy_value)
 void vector_destroy(Vector vec) 
 {
 	// If there is a destroy_value function, we call it for all elements
-	if (vec->destroy_value != NULL)
+	if (vec->destroy_value != NULL) {
 		for (int i = 0; i < vec->size; i++)
 			vec->destroy_value(vec->array[i].value);
-
+	}
+		
 	// We need to free both the array and the struct!
 	free(vec->array);
 	free(vec);			// last the vec!
@@ -177,7 +177,7 @@ VectorNode vector_previous(Vector vec, VectorNode node)
 	return node == &vec->array[0] ? VECTOR_EOF : node - 1;
 }
 
-Pointer vector_node_value(Vector vec, VectorNode node) 
+Pointer vector_node_value(VectorNode node) 
 {
 	return node->value;
 }
@@ -185,9 +185,10 @@ Pointer vector_node_value(Vector vec, VectorNode node)
 VectorNode vector_find_node(Vector vec, Pointer value, CompareFunc compare)
 {
 	// Cross the vector
-	for (int i = 0; i < vec->size; i++)
+	for (int i = 0; i < vec->size; i++) {
 		if (compare(vec->array[i].value, value) == 0)
-			return &vec->array[i]; 			// Found
+			return &vec->array[i]; 				// Found
+	}
 
-	return VECTOR_EOF; 						// Not found
+	return VECTOR_EOF; 							// Not found
 }

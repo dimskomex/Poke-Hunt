@@ -70,7 +70,7 @@ ListNode list_last(List list);
 
 
 // Returns the node after node, or LIST_EOF if node is the last
-ListNode list_next(List list, ListNode node);
+ListNode list_next(ListNode node);
 
 
 // Returns the previous node of node or LIST_BOF if the node is the first
@@ -78,7 +78,7 @@ ListNode list_previous(List list, ListNode node);
 
 
 // Returns the content of the node node
-Pointer list_node_value(List list, ListNode node);
+Pointer list_node_value(ListNode node);
 
 
 // Finds the first element that is equivalent to value (based on the compare function).

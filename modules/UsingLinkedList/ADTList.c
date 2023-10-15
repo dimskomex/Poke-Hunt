@@ -35,7 +35,6 @@ List list_create(DestroyFunc destroy_value)
 
 	// We use dummy node so that even an empty list has a node
 	// (simplifies algorithms). So we have to create him.
-	//
 	list->dummy = malloc(sizeof(*list->dummy));
 	list->dummy->next = NULL; // empty list, dummy has no next
 
@@ -77,14 +76,14 @@ void list_remove_next(List list, ListNode node)
 	// If the node is NULL we simply delete after the dummy node!
 	// This is exactly the dummy value, we don't need a separate implementation.
 	if (node == NULL)
-	node = list->dummy;
+		node = list->dummy;
 
 	// The node to delete is the next node, which must exist
 	ListNode removed = node->next;
 	assert(removed != NULL); // LCOV_EXCL_LINE
 
 	if (list->destroy_value != NULL)
-	list->destroy_value(removed->value);
+		list->destroy_value(removed->value);
 
 	// Connection of the node with the next removed
 	node->next = removed->next; // before free!
@@ -116,8 +115,7 @@ void list_destroy(List list)
 	// Traverse the entire list and free all nodes,
 	// including dummy!
 	ListNode node = list->dummy;
-	while (node != NULL) // while instead of for, because we want to read
-	{
+	while (node != NULL) { 			// while instead of for, because we want to read 
 		ListNode next = node->next; // node->next _before_ we do free!
 
 		// Call destroy_value if it exists (careful, not on dummy!)
@@ -148,7 +146,7 @@ ListNode list_last(List list)
 	return list->last == list->dummy ? LIST_EOF : list->last;
 }
 
-ListNode list_next(List list, ListNode node) 
+ListNode list_next(ListNode node) 
 {
 	assert(node != NULL);
 	return node->next;
@@ -156,14 +154,15 @@ ListNode list_next(List list, ListNode node)
 
 ListNode list_previous(List list, ListNode node)
 {
-	for (ListNode find_node = list->dummy->next; find_node != LIST_EOF; find_node = find_node->next)
+	for (ListNode find_node = list->dummy->next; find_node != LIST_EOF; find_node = find_node->next) {
 		if (find_node->next == node)
 			return find_node;
-
+	}
+		
 	return LIST_BOF;
 }
 
-Pointer list_node_value(List list, ListNode node) 
+Pointer list_node_value(ListNode node) 
 {
 	assert(node != NULL);	
 	return node->value;
@@ -172,9 +171,10 @@ Pointer list_node_value(List list, ListNode node)
 ListNode list_find_node(List list, Pointer value, CompareFunc compare) 
 {
 	// traverse the entire list, call compare until it returns 0
-	for (ListNode node = list->dummy->next; node != NULL; node = node->next)
+	for (ListNode node = list->dummy->next; node != NULL; node = node->next) {
 		if (compare(value, node->value) == 0)
 			return node;		// Found
+	}
 
 	return NULL;				// Not found
 }

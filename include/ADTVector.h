@@ -95,7 +95,7 @@ VectorNode vector_previous(Vector vec, VectorNode node);
 
 
 // Returns the content of the node node
-Pointer vector_node_value(Vector vec, VectorNode node);
+Pointer vector_node_value(VectorNode node);
 
 
 // Finds the first element in the vector that is equal to value (based on the compare function).
