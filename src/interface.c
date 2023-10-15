@@ -102,8 +102,8 @@ void interface_draw_frame(State state)
 	objs = state_objects(state, info->ball->rect.x - SCREEN_WIDTH, info->ball->rect.x + SCREEN_WIDTH);
 
 	Object obj;
-	for (ListNode node = list_first(objs); node != LIST_EOF; node = list_next(objs, node)) {
-		obj = list_node_value(objs, node);
+	for (ListNode node = list_first(objs); node != LIST_EOF; node = list_next(node)) {
+		obj = list_node_value(node);
 
 		obj->type == PLATFORM ? DrawRectangle(obj->rect.x + x_offset - 450, obj->rect.y, obj->rect.width, obj->rect.height, obj->unstable ? RED : WHITE) : 
 								DrawTexture(draw_pokemon(obj->pokemon), obj->rect.x + x_offset - 450, obj->rect.y, WHITE);
