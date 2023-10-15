@@ -1,5 +1,6 @@
-#include "create.h"
 #include <stdlib.h>
+
+#include "create.h"
 
 static Pokemon create_legendary_pokemon(void)
 {

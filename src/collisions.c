@@ -1,5 +1,6 @@
-#include "collisions.h"
 #include <stdlib.h>
+
+#include "collisions.h"
 
 void collision_with_platform(Object pokeball, Object platform)
 {
