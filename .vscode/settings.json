@@ -33,6 +33,8 @@
 		"stdbool.h": "c",
 		"set_utils.h": "c",
 		"state.h": "c",
-		"time.h": "c"
+		"time.h": "c",
+		"stdlib.h": "c",
+		"create.h": "c"
 	},
 }
