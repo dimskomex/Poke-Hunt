@@ -10,11 +10,11 @@
 #include "ADTList.h"
 
 
-// A List is a pointer to this struct
+// A List is a Pointer to this struct
 struct list
 {
 	ListNode dummy; 			// we use dummy node so that even the empty list has a node.
-	ListNode last; 				// pointer to last node, or dummy (if list is empty)
+	ListNode last; 				// Pointer to last node, or dummy (if list is empty)
 	int size; 					// size so list_size is O(1)
 	DestroyFunc destroy_value; 	// Function that destroys an element of the list.
 };
@@ -22,7 +22,7 @@ struct list
 struct list_node 
 {
 	ListNode next; 	// Pointer to next
-	Pointer value; 	// The value we store in the node
+	void *value; 	// The value we store in the node
 };
 
 
@@ -49,7 +49,7 @@ int list_size(List list)
 	return list->size;
 }
 
-void list_insert_next(List list, ListNode node, Pointer value) 
+void list_insert_next(List list, ListNode node, void *value) 
 {
 	// If the node is NULL, simply insert after the dummy node!
 	// This is exactly the dummy value, we don't need a separate implementation.
@@ -97,7 +97,7 @@ void list_remove_next(List list, ListNode node)
 		list->last = node;
 }
 
-Pointer list_find(List list, Pointer value, CompareFunc compare) 
+void *list_find(List list, void *value, CompareFunc compare) 
 {
 	ListNode node = list_find_node(list, value, compare);
 	return node == NULL ? NULL : node->value;
@@ -162,13 +162,13 @@ ListNode list_previous(List list, ListNode node)
 	return LIST_BOF;
 }
 
-Pointer list_node_value(ListNode node) 
+void *list_node_value(ListNode node) 
 {
 	assert(node != NULL);	
 	return node->value;
 }
 
-ListNode list_find_node(List list, Pointer value, CompareFunc compare) 
+ListNode list_find_node(List list, void *value, CompareFunc compare) 
 {
 	// traverse the entire list, call compare until it returns 0
 	for (ListNode node = list->dummy->next; node != NULL; node = node->next) {

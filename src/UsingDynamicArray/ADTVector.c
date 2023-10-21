@@ -12,13 +12,13 @@
 // The initial size we're binding
 #define VECTOR_MIN_CAPACITY 10
 
-// A VectorNode is a pointer to this struct. (struct only contains one element, so we'd go ahead and avoid it, but it makes the code simpler)
+// A VectorNode is a Pointer to this struct. (struct only contains one element, so we'd go ahead and avoid it, but it makes the code simpler)
 struct vector_node 
 {
-	Pointer value;				// The value of node.
+	void *value;				// The value of node.
 };
 
-// Ενα Vector είναι pointer σε αυτό το struct
+// Ενα Vector είναι void *σε αυτό το struct
 struct vector 
 {
 	VectorNode array; 			// The data, array from struct vector_node
@@ -50,14 +50,14 @@ int vector_size(Vector vec)
 	return vec->size;
 }
 
-Pointer vector_get_at(Vector vec, int pos) 
+void *vector_get_at(Vector vec, int pos) 
 {
 	assert(pos >= 0 && pos < vec->size);
 
 	return vec->array[pos].value;
 }
 
-void vector_set_at(Vector vec, int pos, Pointer value) 
+void vector_set_at(Vector vec, int pos, void *value) 
 {
 	assert(pos >= 0 && pos < vec->size);	// LCOV_EXCL_LINE
 
@@ -68,7 +68,7 @@ void vector_set_at(Vector vec, int pos, Pointer value)
 	vec->array[pos].value = value;
 }
 
-void vector_insert_last(Vector vec, Pointer value) 
+void vector_insert_last(Vector vec, void *value) 
 {
 	// We increase the table (if necessary) so that it can hold at least size elements
 	// Double the capacity each time (important for complexity!)
@@ -109,8 +109,8 @@ void vector_remove(Vector vec, int pos)
     // by overwriting each element with the value of the next element.
     // Stop at the second-to-last element since the last element will be removed.
     for (int i = pos; i < vector_size(vec) - 1; i++) {
-        // Get the pointer to the current element at position i
-        Pointer p = vector_get_at(vec, i + 1);
+        // Get the void *to the current element at position i
+        void *p = vector_get_at(vec, i + 1);
 
         // Overwrite the current element at position i with the value
         // of the next element at position i + 1
@@ -121,7 +121,7 @@ void vector_remove(Vector vec, int pos)
     vector_remove_last(vec);
 }
 
-Pointer vector_find(Vector vec, Pointer value, CompareFunc compare) 
+void *vector_find(Vector vec, void *value, CompareFunc compare) 
 {
 	// cross the vector
 	for (int i = 0; i < vec->size; i++) {
@@ -177,12 +177,12 @@ VectorNode vector_previous(Vector vec, VectorNode node)
 	return node == &vec->array[0] ? VECTOR_EOF : node - 1;
 }
 
-Pointer vector_node_value(VectorNode node) 
+void *vector_node_value(VectorNode node) 
 {
 	return node->value;
 }
 
-VectorNode vector_find_node(Vector vec, Pointer value, CompareFunc compare)
+VectorNode vector_find_node(Vector vec, void *value, CompareFunc compare)
 {
 	// Cross the vector
 	for (int i = 0; i < vec->size; i++) {

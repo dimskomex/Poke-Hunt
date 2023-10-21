@@ -36,7 +36,7 @@ int list_size(List list);
 
 
 // Adds a new node __after__ node, or at the beginning if node == LIST_BOF, with value content.
-void list_insert_next(List list, ListNode node, Pointer value);
+void list_insert_next(List list, ListNode node, void * value);
 
 
 // Removes the __next__ node from node, or the first node if node == LIST_BOF.
@@ -46,7 +46,7 @@ void list_remove_next(List list, ListNode node);
 
 // Returns the first value that is equivalent to value
 // (based on the compare function), or NULL if not present
-Pointer list_find(List list, Pointer value, CompareFunc compare);
+void * list_find(List list, void * value, CompareFunc compare);
 
 
 // Changes the function called on each element removal/replacement to
@@ -78,9 +78,9 @@ ListNode list_previous(List list, ListNode node);
 
 
 // Returns the content of the node node
-Pointer list_node_value(ListNode node);
+void * list_node_value(ListNode node);
 
 
 // Finds the first element that is equivalent to value (based on the compare function).
 // Returns the element node, or LIST_EOF if not found.
-ListNode list_find_node(List list, Pointer value, CompareFunc compare);
+ListNode list_find_node(List list, void * value, CompareFunc compare);

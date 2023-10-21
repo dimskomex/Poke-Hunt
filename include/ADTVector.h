@@ -31,7 +31,7 @@ int vector_size(Vector vec);
 
 
 // Adds the value value to the _end_ of the vector vec. The size of the vector increases by 1.
-void vector_insert_last(Vector vec, Pointer value);
+void vector_insert_last(Vector vec, void *value);
 
 
 // Removes the last element of the vector. The size of the vector is reduced by 1.
@@ -44,17 +44,17 @@ void vector_remove(Vector vec, int pos);
 
 
 // Returns the value at position pos of vector vec (undefined result if pos < 0 or pos >= size)
-Pointer vector_get_at(Vector vec, int pos);
+void *vector_get_at(Vector vec, int pos);
 
 
 // Changes the value at pos of Vector vec to value.
 // DO NOT resize the vector, if pos >= size the result is undefined.
-void vector_set_at(Vector vec, int pos, Pointer value);
+void vector_set_at(Vector vec, int pos, void *value);
 
 
 // Finds and returns the first element in the vector equal to value
 // (based on the compare function), or NULL if no element is found.
-Pointer vector_find(Vector vec, Pointer value, CompareFunc compare);
+void *vector_find(Vector vec, void *value, CompareFunc compare);
 
 
 // Changes the function called on each element removal/replacement to
@@ -95,9 +95,9 @@ VectorNode vector_previous(Vector vec, VectorNode node);
 
 
 // Returns the content of the node node
-Pointer vector_node_value(VectorNode node);
+void *vector_node_value(VectorNode node);
 
 
 // Finds the first element in the vector that is equal to value (based on the compare function).
 // Returns the node of the element, or VECTOR_EOF if not found.
-VectorNode vector_find_node(Vector vec, Pointer value, CompareFunc compare);
+VectorNode vector_find_node(Vector vec, void *value, CompareFunc compare);
