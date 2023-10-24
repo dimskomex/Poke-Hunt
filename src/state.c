@@ -56,6 +56,7 @@ static Object create_object(ObjectType type, float x, float y, float width, floa
 // in include/raylib.h). x,y refer to the top-left corner of the Rectangle.
 static void add_objects(State state, float start_x) 
 {
+	srand(time(NULL));
 	// Add PLATFORM_NUM platforms, with random attributes.
 	for (int i = 0; i < PLATFORM_NUM; i++)  {
 		Object platform = create_object (
