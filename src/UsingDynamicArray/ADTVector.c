@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "ADTVector.h"
+#include "../../include/ADTVector.h"
 
 // The initial size we're binding
 #define VECTOR_MIN_CAPACITY 10
