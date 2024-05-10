@@ -18,7 +18,6 @@ struct vector_node
 	void *value;				// The value of node.
 };
 
-// Ενα Vector είναι void *σε αυτό το struct
 struct vector 
 {
 	VectorNode array; 			// The data, array from struct vector_node
@@ -75,8 +74,7 @@ void vector_insert_last(Vector vec, void *value)
 	if (vec->capacity == vec->size) {
 		// Attention: we should not free the old pointer, realloc does that
 		vec->capacity *= 2;
-		vec->array = realloc(vec->array, vec->capacity * sizeof(*vec->array));
-	}
+		vec->array = realloc(vec->array, vec->capacity * sizeof(*vec->array)); }
 
 	// Grow the array and add the element
 	vec->array[vec->size].value = value;
