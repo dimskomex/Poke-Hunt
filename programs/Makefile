@@ -9,7 +9,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g3 -I$(INCLUDE) $(LDFLAGS)
 LDFLAGS = -lm
 
-OBJS = game.o $(SRC)/state.o $(SRC)/interface.o $(SRC)/updates.o $(SRC)/collisions.o $(SRC)/UsingLinkedList/ADTList.o $(SRC)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a $(SRC)/create.o 
+OBJS = game.o $(SRC)/state.o $(SRC)/interface.o $(SRC)/updates.o $(SRC)/collisions.o $(SRC)/UsingLinkedList/ADTList.o $(SRC)/UsingDynamicArray/ADTVector.o $(LIB)/libraylib.a $(SRC)/create.o $(SRC)/probabilities.o
 
 EXEC = game
 
