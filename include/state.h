@@ -60,7 +60,6 @@ typedef enum
 	CLASSIC_POKEBALL = 1, 
 	GREAT_BALL,
 	ULTRABALL, 
-	TIMERBALL,
 	MASTERBALL
 } Pokeball; 
 

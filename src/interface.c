@@ -5,7 +5,7 @@
 #include "interface.h"
 
 // Photos
-Texture pokeball_img, greatball_img, ultraball_img, timerball_img, masterball_img;
+Texture pokeball_img, greatball_img, ultraball_img, masterball_img;
 Texture mewtwo_img, arceus_img, reyquaza_img, zekrom_img, reshiram_img; 
 Texture staryu_img, starmie_img, bulbasaur_img, charmander_img, picachu_img, gengar_img;
 Texture torterra_img, eevee_img, snorlax_img, squirtle_img, lucario_img, hypno_img, wobbuffet_img;
@@ -27,7 +27,7 @@ static Texture2D draw_pokemon(Pokemon pokemon)
 static Texture draw_pokeball(StateInfo info)
 {
 	return info->ball->pokeball == 	CLASSIC_POKEBALL ? pokeball_img : info->ball->pokeball == GREAT_BALL ? greatball_img : 
-	info->ball->pokeball == ULTRABALL ? ultraball_img : info->ball->pokeball == TIMERBALL ? timerball_img:  masterball_img; 
+	info->ball->pokeball == ULTRABALL ? ultraball_img : masterball_img; 
 }
 
 void interface_init(void) 
@@ -41,7 +41,6 @@ void interface_init(void)
 	pokeball_img = LoadTextureFromImage(LoadImage("photos/pokeball.png"));
 	greatball_img = LoadTextureFromImage(LoadImage("photos/greatball.png"));
 	ultraball_img = LoadTextureFromImage(LoadImage("photos/ultraball.png"));
-	timerball_img = LoadTextureFromImage(LoadImage("photos/timerball.png"));
 	masterball_img = LoadTextureFromImage(LoadImage("photos/masterball.png"));
 
 	staryu_img = LoadTextureFromImage(LoadImage("photos/staryu.png"));

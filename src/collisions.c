@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
 #include "collisions.h"
+#include "probabilities.h"
 
 void collision_with_platform(Object pokeball, Object platform)
 {
@@ -23,19 +24,15 @@ static bool is_iconic(Pokemon pokemon)
 
 int collision_with_pokemon(Pokeball pokeball, Pokemon pokemon)
 {
-    int x = rand();
     switch (pokeball) {
     case CLASSIC_POKEBALL:
-        return is_legendary(pokemon) ? x % 50 == 0 : is_iconic(pokemon) ? x % 40 == 0 : x % 30 == 0;
+        return is_legendary(pokemon) ? success(0.01) : is_iconic(pokemon) ? success(0.26) : success(0.31);
 
     case GREAT_BALL:
-        return is_legendary(pokemon) ? x % 45 == 0 : is_iconic(pokemon) ? x % 35 == 0 : x % 25 == 0;
+        return is_legendary(pokemon) ? success(0.1) : is_iconic(pokemon) ? success(0.31) : success(0.36);
 
     case ULTRABALL:
-        return is_legendary(pokemon) ? x % 40 == 0 : is_iconic(pokemon) ? x % 30 == 0 : x % 20 == 0;
-
-    case TIMERBALL:
-        return is_legendary(pokemon) ? x % 35 == 0 : is_iconic(pokemon) ? x % 30 == 0 : x % 20 == 0;
+        return is_legendary(pokemon) ? success(0.15) : is_iconic(pokemon) ? success(0.4) : success(0.42);
 
     case MASTERBALL:
         return 1;
