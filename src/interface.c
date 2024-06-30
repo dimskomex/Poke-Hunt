@@ -88,7 +88,7 @@ void interface_draw_frame(State state)
 	ClearBackground(BLACK);
 
 	// Draw the ball
-    	 StateInfo info = state_info(state);
+	StateInfo info = state_info(state);
 	float x_offset;
 
 	x_offset = SCREEN_WIDTH - 205 - info->ball->rect.x;
