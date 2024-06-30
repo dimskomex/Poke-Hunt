@@ -26,7 +26,7 @@ $(EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
 
 clean:
-	rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJS) $(EXEC) valgrind-out.txt
 
 run: $(EXEC)
 	./$(EXEC) $(ARGS)
