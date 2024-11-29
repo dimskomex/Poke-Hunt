@@ -90,10 +90,6 @@ write in the terminal the command:
 
 ## Some comments
   * The game has memory leaks. This is due to the raylib library.
-  * if you are using Visual Studio Code, you can run the program by pressing:
-
-        ctrl + shift + b
-      of course you must have downloaded all the necessary tools.
 
 ## About game:
 - The game is based on the first task of the lesson [Data structures & programming techniques of the University of Athens](https://k08.chatzi.org/projects/project1/) and uses the [raylib graphics library](https://github.com/raysan5/raylib/blob/master/src/raylib.h).

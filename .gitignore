@@ -7,7 +7,6 @@
 !Makefile
 !.gitignore
 !README.md
-!.vscode/*.json
 !*.png
 !*.jpg
 !*.mp3
