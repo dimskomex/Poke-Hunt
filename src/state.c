@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "ADTVector.h"
 #include "ADTList.h"
-#include "state.h"
-#include "updates.h"
+#include "ADTVector.h"
 #include "collisions.h"
 #include "create.h"
+#include "state.h"
+#include "updates.h"
 
 #define MIN_HEIGHT (SCREEN_HEIGHT - 45)
 
@@ -14,28 +14,29 @@
 // The State type is a pointer to this struct, but the struct itself
 // not visible to the user.
 
-struct state 
-{
-	Vector objects;			 	// contains elements Object (Platforms, Pokemon)
-	struct state_info info; 	// General information about the state of the game
-	float speed_factor; 		// Speed multiplier (1 = normal speed, 2 = double, etc)
+struct state {
+  Vector objects;         // contains elements Object (Platforms, Pokemon)
+  struct state_info info; // General information about the state of the game
+  float speed_factor; // Speed multiplier (1 = normal speed, 2 = double, etc)
 };
 
 // Creates and returns an object
-static Object create_object(ObjectType type, float x, float y, float width, float height, VerticalMovement vert_mov, float speed, bool unstable, Pokemon pokemon, Pokeball pokeball) 
-{
-	Object obj = malloc(sizeof(*obj));
-	obj->type = type;
-	obj->rect.x = x;
-	obj->rect.y = y;
-	obj->rect.width = width;
-	obj->rect.height = height;
-	obj->vert_mov = vert_mov;
-	obj->vert_speed = speed;
-	obj->unstable = unstable;
-	obj->pokemon = pokemon;
-	obj->pokeball = pokeball;
-	return obj;
+static Object create_object(ObjectType type, float x, float y, float width,
+                            float height, VerticalMovement vert_mov,
+                            float speed, bool unstable, Pokemon pokemon,
+                            Pokeball pokeball) {
+  Object obj = malloc(sizeof(*obj));
+  obj->type = type;
+  obj->rect.x = x;
+  obj->rect.y = y;
+  obj->rect.width = width;
+  obj->rect.height = height;
+  obj->vert_mov = vert_mov;
+  obj->vert_speed = speed;
+  obj->unstable = unstable;
+  obj->pokemon = pokemon;
+  obj->pokeball = pokeball;
+  return obj;
 }
 
 // Adds objects to the track (which may already contain objects).
@@ -54,180 +55,186 @@ static Object create_object(ObjectType type, float x, float y, float width, floa
 // of each object. x,y,width,height define a rectangle, so
 // can be stored all together in obj->rect of type Rectangle (defined
 // in include/raylib.h). x,y refer to the top-left corner of the Rectangle.
-static void add_objects(State state, float start_x) 
-{
-	srand(time(NULL));
-	// Add PLATFORM_NUM platforms, with random attributes.
-	for (int i = 0; i < PLATFORM_NUM; i++)  {
-		Object platform = create_object (
-			PLATFORM,
-			start_x + 150 + rand() % 80, 							// x with random distance from previous in interval [150, 230]
-			SCREEN_HEIGHT / 4 + rand() % SCREEN_HEIGHT / 2, 		// y random in the interval [SCREEN_HEIGHT/4, 3*SCREEN_HEIGHT/4]
-			i == 0 ? 250 : 50 + rand() % 200, 						// width randomly in the interval [50, 250] (first always 250)
-			20, 													// height
-			i < 3 || rand() % 2 == 0 ? MOVING_UP : MOVING_DOWN, 	// random initial move (first 3 always up)
-			0.6 + 3 * (rand() % 100) / 100, 						// speed randomly in the interval [0.6, 3.6]
-			i > 0 && (rand() % 10) == 0, 							// 10% (random) platforms are unstable (except the first one)
-			NO_POKEMON,												// isn't pokemon
-			NO_POKEBALL												// isn't pokeball
-		);
-		vector_insert_last(state->objects, platform);
+static void add_objects(State state, float start_x) {
+  srand(time(NULL));
+  // Add PLATFORM_NUM platforms, with random attributes.
+  for (int i = 0; i < PLATFORM_NUM; i++) {
+    Object platform = create_object(
+        PLATFORM,
+        start_x + 150 + rand() % 80, // x with random distance from previous in
+                                     // interval [150, 230]
+        SCREEN_HEIGHT / 4 +
+            rand() % SCREEN_HEIGHT / 2, // y random in the interval
+                                        // [SCREEN_HEIGHT/4, 3*SCREEN_HEIGHT/4]
+        i == 0 ? 250 : 50 + rand() % 200, // width randomly in the interval [50,
+                                          // 250] (first always 250)
+        20,                               // height
+        i < 3 || rand() % 2 == 0
+            ? MOVING_UP
+            : MOVING_DOWN, // random initial move (first 3 always up)
+        0.6 + 3 * (rand() % 100) /
+                  100, // speed randomly in the interval [0.6, 3.6]
+        i > 0 &&
+            (rand() % 10) ==
+                0, // 10% (random) platforms are unstable (except the first one)
+        NO_POKEMON, // isn't pokemon
+        NO_POKEBALL // isn't pokeball
+    );
+    vector_insert_last(state->objects, platform);
 
-		// On 50% of the platforms (random), except the first one, we add pokemon
-		if(i != 0 && rand() % 2 == 0) {
-			Object pokemon = create_object (
-				POKEMON,
-				start_x + 200 + rand() % 60, 						// x with a random distance from the previous platform in the interval [200,260]
-				SCREEN_HEIGHT / 8 + rand() % SCREEN_HEIGHT / 2, 	// y random in the interval [SCREEN_HEIGHT/8, 5*SCREEN_HEIGHT/8]
-				30, 30, 											// width, height
-				IDLE, 												// no movement
-				0, 													// speed 0
-				false, 												// 'unstable' always false for stars
-				create_pokemon(),
-				NO_POKEBALL											// isn't pokeball
-			);
-			vector_insert_last(state->objects, pokemon);
-		}
+    // On 50% of the platforms (random), except the first one, we add pokemon
+    if (i != 0 && rand() % 2 == 0) {
+      Object pokemon = create_object(
+          POKEMON,
+          start_x + 200 +
+              rand() % 60, // x with a random distance from the previous
+                           // platform in the interval [200,260]
+          SCREEN_HEIGHT / 8 + rand() % SCREEN_HEIGHT /
+                                  2, // y random in the interval
+                                     // [SCREEN_HEIGHT/8, 5*SCREEN_HEIGHT/8]
+          30, 30,                    // width, height
+          IDLE,                      // no movement
+          0,                         // speed 0
+          false,                     // 'unstable' always false for stars
+          create_pokemon(),
+          NO_POKEBALL // isn't pokeball
+      );
+      vector_insert_last(state->objects, pokemon);
+    }
 
-		start_x = platform->rect.x + platform->rect.width;			// move next items to the right
-	}
+    start_x =
+        platform->rect.x + platform->rect.width; // move next items to the right
+  }
 }
 
-static void game_over(StateInfo info)
-{
-	info->playing = false;
-	info->paused = true;
+static void game_over(StateInfo info) {
+  info->playing = false;
+  info->paused = true;
 }
 
-static void new_state(State state)
-{
-	state->info.playing = true;
-	state_destroy(state);
-	state = state_create();
+static void new_state(State state) {
+  state->info.playing = true;
+  state_destroy(state);
+  state = state_create();
 }
 
-static Object find_max_platform(State state)
-{
-	Object max = vector_get_at(state->objects, 0);
-	for (int i = 1; i < vector_size(state->objects); i++) {
-		Object obj = vector_get_at(state->objects, i);
-		if (obj->rect.x > max->rect.x && obj->type == PLATFORM)
-			max = obj;
-	}
+static Object find_max_platform(State state) {
+  Object max = vector_get_at(state->objects, 0);
+  for (int i = 1; i < vector_size(state->objects); i++) {
+    Object obj = vector_get_at(state->objects, i);
+    if (obj->rect.x > max->rect.x && obj->type == PLATFORM)
+      max = obj;
+  }
 
-	return max;
+  return max;
 }
 
-State state_create(void) 
-{
-	// Create the state
-	State state = malloc(sizeof(*state));
+State state_create(void) {
+  // Create the state
+  State state = malloc(sizeof(*state));
 
-	// General informations
-	state->info.playing = true; 		// The game starts immediately
-	state->info.paused = false; 		// Without being paused.
-	state->speed_factor = 1; 			// Normal speed
-	state->info.score = 0; 				// Initial score 0
+  // General informations
+  state->info.playing = true; // The game starts immediately
+  state->info.paused = false; // Without being paused.
+  state->speed_factor = 1;    // Normal speed
+  state->info.score = 0;      // Initial score 0
 
-	// Create the vector of objects, and add objects
-	// starting at x = 0.
-	state->objects = vector_create(0, NULL);
-	add_objects(state, 0);
+  // Create the vector of objects, and add objects
+  // starting at x = 0.
+  state->objects = vector_create(0, NULL);
+  add_objects(state, 0);
 
-	// Create the pokeball by placing it on the first platform
-	Object first_platform = vector_get_at(state->objects, 0);
-	state->info.ball = create_object (
-		POKEBALL,
-		first_platform->rect.x, 		// x at the beginning of the platform
-		first_platform->rect.y - 40, 	// y on platform
-		45, 45, 						// width, height
-		IDLE, 							// no initial vertical movement
-		0, 								// initial speed 0
-		false, 							// "unstable" always false for ball
-		NO_POKEMON,						// is not pokemon
-		CLASSIC_POKEBALL				// start with the classic pokeball
-	);
+  // Create the pokeball by placing it on the first platform
+  Object first_platform = vector_get_at(state->objects, 0);
+  state->info.ball = create_object(
+      POKEBALL,
+      first_platform->rect.x,      // x at the beginning of the platform
+      first_platform->rect.y - 40, // y on platform
+      45, 45,                      // width, height
+      IDLE,                        // no initial vertical movement
+      0,                           // initial speed 0
+      false,                       // "unstable" always false for ball
+      NO_POKEMON,                  // is not pokemon
+      CLASSIC_POKEBALL             // start with the classic pokeball
+  );
 
-	return state;
+  return state;
 }
 
+StateInfo state_info(State state) { return &state->info; }
 
-StateInfo state_info(State state) 
-{
-	return &state->info;
+List state_objects(State state, float x_from, float x_to) {
+  List result;
+
+  result = list_create(NULL);
+  for (int i = 0; i < vector_size(state->objects); i++) {
+    Object obj = vector_get_at(state->objects, i);
+    if (obj->rect.x >= x_from && obj->rect.x <= x_to)
+      list_insert_next(result, LIST_BOF, obj);
+  }
+
+  return result;
 }
 
-List state_objects(State state, float x_from, float x_to) 
-{
-	List result;
-
-	result = list_create(NULL);
-	for (int i = 0; i < vector_size(state->objects); i++) {
-		Object obj = vector_get_at(state->objects, i);
-		if (obj->rect.x >= x_from && obj->rect.x <= x_to)
-			list_insert_next(result, LIST_BOF, obj);
-	}
-
-	return result;
+static bool is_paused(bool paused, KeyState keys) {
+  return !(!paused || (keys->n && paused));
 }
 
-static bool is_paused(bool paused, KeyState keys)
-{
-	return !(!paused || (keys->n && paused));
+static int add_score(Pokemon pokemon) {
+  return (pokemon >= MEWTWO && pokemon <= ZEKROM)      ? 15
+         : (pokemon >= GYARADOS && pokemon <= LUCARIO) ? 10
+                                                       : 5;
 }
 
-static int add_score(Pokemon pokemon)
-{
-	return (pokemon >= MEWTWO && pokemon <= ZEKROM) ? 15 : (pokemon >= GYARADOS && pokemon <= LUCARIO) ? 10 : 5;
+void state_update(State state, KeyState keys) {
+
+  if (!is_paused(state->info.paused, keys)) {
+    Object last_platform = find_max_platform(state);
+    update_pokeball(state->info.ball, keys, state->speed_factor,
+                    state->info.score);
+
+    // in each frame the falling state is made so that a collision can occur
+    if (state->info.ball->vert_mov == IDLE) {
+      state->info.ball->vert_mov = FALLING;
+      state->info.ball->vert_speed = 1.5;
+    }
+
+    for (int i = 0; i < vector_size(state->objects); i++) {
+      Object obj = vector_get_at(state->objects, i);
+      if (obj->type == PLATFORM)
+        update_platform(obj, state->speed_factor);
+
+      if (CheckCollisionRecs(obj->rect, state->info.ball->rect)) {
+        if (obj->type == POKEMON &&
+            collision_with_pokemon(state->info.ball->pokeball, obj->pokemon)) {
+          state->info.score += add_score(obj->pokemon);
+          vector_remove(state->objects, i);
+        } else if (obj->type == PLATFORM &&
+                   state->info.ball->vert_mov != JUMPING &&
+                   state->info.ball->rect.y <
+                       (obj->rect.y - obj->rect.height)) {
+          collision_with_platform(state->info.ball, obj);
+        }
+      }
+    }
+
+    if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH) {
+      add_objects(state, last_platform->rect.x + 120);
+      state->speed_factor *= 1.1;
+    }
+
+    if (!(state->info.ball->rect.y < MIN_HEIGHT))
+      game_over(&state->info);
+  }
+
+  if (!state->info.playing && keys->enter)
+    new_state(state);
+
+  if (keys->p)
+    state->info.paused = !state->info.paused;
 }
 
-void state_update(State state, KeyState keys)
-{	
-
-	if (!is_paused(state->info.paused, keys)) {
-		Object last_platform = find_max_platform(state);
-		update_pokeball(state->info.ball, keys, state->speed_factor, state->info.score);
-
-		// in each frame the falling state is made so that a collision can occur
-		if (state->info.ball->vert_mov == IDLE) {
-			state->info.ball->vert_mov = FALLING;
-			state->info.ball->vert_speed = 1.5;
-		}
-
-		for (int i = 0; i < vector_size(state->objects); i++) {
-			Object obj = vector_get_at(state->objects, i);
-			if (obj->type == PLATFORM)
-				update_platform(obj, state->speed_factor);
-
-			if (CheckCollisionRecs(obj->rect, state->info.ball->rect)) {
-				if (obj->type == POKEMON && collision_with_pokemon(state->info.ball->pokeball, obj->pokemon)) {
-					state->info.score += add_score(obj->pokemon);
-					vector_remove(state->objects, i);	
-				} else if (obj->type == PLATFORM && state->info.ball->vert_mov != JUMPING && state->info.ball->rect.y < (obj->rect.y - obj->rect.height)) {
-						collision_with_platform(state->info.ball, obj);
-				}
-					
-			}
-		}
-
-		if (last_platform->rect.x - state->info.ball->rect.x < SCREEN_WIDTH) {
-			add_objects(state, last_platform->rect.x + 120);
-			state->speed_factor *=  1.1;
-		}
-
-		if(!(state->info.ball->rect.y < MIN_HEIGHT)) 
-			game_over(&state->info);
-	}
-	
-	if (!state->info.playing && keys->enter)
-		new_state(state);
-
-	if (keys->p)
-		state->info.paused = !state->info.paused;
-}
-
-void state_destroy(State state)
-{
-	vector_destroy(state->objects);
-	free(state);
+void state_destroy(State state) {
+  vector_destroy(state->objects);
+  free(state);
 }
